@@ -1,0 +1,813 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABPOA_AFFINE_GAP	abpoa.h	17;"	d
+ABPOA_ALIGN_H	abpoa_align.h	2;"	d
+ABPOA_ALL_OP	abpoa_align.h	23;"	d
+ABPOA_CDEL	abpoa.h	26;"	d
+ABPOA_CDIFF	abpoa.h	27;"	d
+ABPOA_CHARD_CLIP	abpoa.h	29;"	d
+ABPOA_CIGAR_STR	abpoa.h	23;"	d
+ABPOA_CINS	abpoa.h	25;"	d
+ABPOA_CMATCH	abpoa.h	24;"	d
+ABPOA_CONVEX_GAP	abpoa.h	18;"	d
+ABPOA_CSOFT_CLIP	abpoa.h	28;"	d
+ABPOA_E1_OP	abpoa_align.h	17;"	d
+ABPOA_E2_OP	abpoa_align.h	18;"	d
+ABPOA_EXTEND_MODE	abpoa.h	12;"	d
+ABPOA_EXTRA_B	abpoa.h	20;"	d
+ABPOA_EXTRA_F	abpoa.h	21;"	d
+ABPOA_E_OP	abpoa_align.h	19;"	d
+ABPOA_F1_OP	abpoa_align.h	20;"	d
+ABPOA_F2_OP	abpoa_align.h	21;"	d
+ABPOA_F_OP	abpoa_align.h	22;"	d
+ABPOA_GAP_EXT1	abpoa_align.h	13;"	d
+ABPOA_GAP_EXT2	abpoa_align.h	14;"	d
+ABPOA_GAP_OPEN1	abpoa_align.h	11;"	d
+ABPOA_GAP_OPEN2	abpoa_align.h	12;"	d
+ABPOA_GLOBAL_MODE	abpoa.h	10;"	d
+ABPOA_GRAPH_H	abpoa_graph.h	2;"	d
+ABPOA_H	abpoa.h	2;"	d
+ABPOA_HB	abpoa.h	38;"	d
+ABPOA_HC	abpoa.h	39;"	d
+ABPOA_LINEAR_GAP	abpoa.h	16;"	d
+ABPOA_LOCAL_MODE	abpoa.h	11;"	d
+ABPOA_MATCH	abpoa_align.h	9;"	d
+ABPOA_MF	abpoa.h	40;"	d
+ABPOA_MISMATCH	abpoa_align.h	10;"	d
+ABPOA_M_OP	abpoa_align.h	16;"	d
+ABPOA_OUT_BOTH	abpoa.h	36;"	d
+ABPOA_OUT_CONS	abpoa.h	34;"	d
+ABPOA_OUT_MSA	abpoa.h	35;"	d
+ABPOA_SINK_NODE_ID	abpoa.h	32;"	d
+ABPOA_SRC_NODE_ID	abpoa.h	31;"	d
+AC_KSEQ_H	kseq.h	29;"	d
+ATTRIBUTE	utils.h	47;"	d
+ATTRIBUTE	utils.h	49;"	d
+AVG_OF_TWO	utils.h	230;"	d
+BLACK	utils.h	248;"	d
+BLINK	utils.h	266;"	d
+BLUE	utils.h	256;"	d
+BOLD	utils.h	264;"	d
+BROWN	utils.h	254;"	d
+B_BLACK	utils.h	249;"	d
+B_BLUE	utils.h	257;"	d
+B_CYAN	utils.h	261;"	d
+B_GREEN	utils.h	253;"	d
+B_PURPLE	utils.h	259;"	d
+B_RED	utils.h	251;"	d
+CHUNK_READ_N	abpoa_align.h	7;"	d
+CLEAR	utils.h	270;"	d
+CLRLINE	utils.h	271;"	d
+CONTACT	abpoa.c	/^char CONTACT[30] = "yangao07@hit.edu.cn";$/;"	v
+CYAN	utils.h	260;"	d
+DESCRIPTION	abpoa.c	/^char DESCRIPTION[100] = _ba "daptive " _bb "anded " _bP "artial " _bO "rder " _bA "lignment";$/;"	v
+DIPLOID_MIN_FREQ	abpoa_align.h	25;"	d
+FSYNC_ON_FLUSH	utils.c	27;"	d	file:
+GET_AD_DP_BEGIN	abpoa_align.h	30;"	d
+GET_AD_DP_END	abpoa_align.h	31;"	d
+GRAY	utils.h	262;"	d
+GREEN	utils.h	252;"	d
+HIDE	utils.h	268;"	d
+HW_ABM	simd_check.c	/^int HW_ABM;$/;"	v
+HW_ADX	simd_check.c	/^int HW_ADX;$/;"	v
+HW_AES	simd_check.c	/^int HW_AES;$/;"	v
+HW_AVX	simd_check.c	/^int HW_AVX;$/;"	v
+HW_AVX2	simd_check.c	/^int HW_AVX2;$/;"	v
+HW_AVX512_BW	simd_check.c	/^int HW_AVX512_BW;$/;"	v
+HW_AVX512_CD	simd_check.c	/^int HW_AVX512_CD;$/;"	v
+HW_AVX512_DQ	simd_check.c	/^int HW_AVX512_DQ;$/;"	v
+HW_AVX512_ER	simd_check.c	/^int HW_AVX512_ER;$/;"	v
+HW_AVX512_F	simd_check.c	/^int HW_AVX512_F;$/;"	v
+HW_AVX512_IFMA	simd_check.c	/^int HW_AVX512_IFMA;$/;"	v
+HW_AVX512_PF	simd_check.c	/^int HW_AVX512_PF;$/;"	v
+HW_AVX512_VBMI	simd_check.c	/^int HW_AVX512_VBMI;$/;"	v
+HW_AVX512_VL	simd_check.c	/^int HW_AVX512_VL;$/;"	v
+HW_BMI1	simd_check.c	/^int HW_BMI1;$/;"	v
+HW_BMI2	simd_check.c	/^int HW_BMI2;$/;"	v
+HW_FMA3	simd_check.c	/^int HW_FMA3;$/;"	v
+HW_FMA4	simd_check.c	/^int HW_FMA4;$/;"	v
+HW_MMX	simd_check.c	/^int HW_MMX;$/;"	v
+HW_MPX	simd_check.c	/^int HW_MPX;$/;"	v
+HW_PREFETCHWT1	simd_check.c	/^int HW_PREFETCHWT1;$/;"	v
+HW_RDRAND	simd_check.c	/^int HW_RDRAND;$/;"	v
+HW_SHA	simd_check.c	/^int HW_SHA;$/;"	v
+HW_SSE	simd_check.c	/^int HW_SSE;$/;"	v
+HW_SSE2	simd_check.c	/^int HW_SSE2;$/;"	v
+HW_SSE3	simd_check.c	/^int HW_SSE3;$/;"	v
+HW_SSE41	simd_check.c	/^int HW_SSE41;$/;"	v
+HW_SSE42	simd_check.c	/^int HW_SSE42;$/;"	v
+HW_SSE4a	simd_check.c	/^int HW_SSE4a;$/;"	v
+HW_SSSE3	simd_check.c	/^int HW_SSSE3;$/;"	v
+HW_XOP	simd_check.c	/^int HW_XOP;$/;"	v
+HW_x64	simd_check.c	/^int HW_x64;$/;"	v
+KDQ_DECLARE	kdq.h	106;"	d
+KDQ_INIT	kdq.h	104;"	d
+KDQ_INIT2	kdq.h	92;"	d
+KSEQ_DECLARE	kseq.h	239;"	d
+KSEQ_INIT	kseq.h	237;"	d
+KSEQ_INIT2	kseq.h	230;"	d
+KSEQ_INIT2	utils.c	/^KSEQ_INIT2(, gzFile, err_gzread)$/;"	f
+KSTREAM_INIT	kseq.h	147;"	d
+KSTRING_T	kseq.h	83;"	d
+KS_SEP_LINE	kseq.h	41;"	d
+KS_SEP_MAX	kseq.h	42;"	d
+KS_SEP_SPACE	kseq.h	39;"	d
+KS_SEP_TAB	kseq.h	40;"	d
+LT	abpoa_graph.c	11;"	d	file:
+LogTable256	abpoa_graph.c	/^static const char LogTable256[256] = {$/;"	v	file:
+LogTable65536	abpoa.h	/^char LogTable65536[65536];$/;"	v
+MAX_OF_THREE	utils.h	229;"	d
+MAX_OF_TWO	utils.h	227;"	d
+MIN_OF_THREE	utils.h	228;"	d
+MIN_OF_TWO	utils.h	226;"	d
+Maski16	simd_instruction.h	182;"	d
+Maski16	simd_instruction.h	503;"	d
+Maski32	simd_instruction.h	183;"	d
+Maski32	simd_instruction.h	325;"	d
+Maski32	simd_instruction.h	504;"	d
+Maski64	simd_instruction.h	184;"	d
+Maski64	simd_instruction.h	326;"	d
+Maski8	simd_instruction.h	181;"	d
+NONE	utils.h	247;"	d
+OS_AVX	simd_check.c	/^int OS_AVX;$/;"	v
+OS_AVX512	simd_check.c	/^int OS_AVX512;$/;"	v
+PROG	abpoa.c	/^char PROG[20] = "abpoa";$/;"	v
+PURPLE	utils.h	258;"	d
+RED	utils.h	250;"	d
+REVERSE	utils.h	267;"	d
+SEQ_H	seq.h	2;"	d
+SIMDAdd	simd_instruction.h	237;"	d
+SIMDAdd	simd_instruction.h	381;"	d
+SIMDAdd	simd_instruction.h	460;"	d
+SIMDAdd	simd_instruction.h	51;"	d
+SIMDAddi16	simd_instruction.h	383;"	d
+SIMDAddi16	simd_instruction.h	462;"	d
+SIMDAddi16	simd_instruction.h	53;"	d
+SIMDAddi32	simd_instruction.h	240;"	d
+SIMDAddi32	simd_instruction.h	384;"	d
+SIMDAddi32	simd_instruction.h	463;"	d
+SIMDAddi32	simd_instruction.h	54;"	d
+SIMDAddi64	simd_instruction.h	241;"	d
+SIMDAddi64	simd_instruction.h	385;"	d
+SIMDAddi64	simd_instruction.h	464;"	d
+SIMDAddi64	simd_instruction.h	55;"	d
+SIMDAddi8	simd_instruction.h	382;"	d
+SIMDAddi8	simd_instruction.h	461;"	d
+SIMDAddi8	simd_instruction.h	52;"	d
+SIMDAnd	simd_instruction.h	249;"	d
+SIMDAnd	simd_instruction.h	393;"	d
+SIMDAnd	simd_instruction.h	472;"	d
+SIMDAnd	simd_instruction.h	63;"	d
+SIMDAndNot	simd_instruction.h	251;"	d
+SIMDAndNot	simd_instruction.h	395;"	d
+SIMDAndNot	simd_instruction.h	474;"	d
+SIMDAndNot	simd_instruction.h	65;"	d
+SIMDAndNoti	simd_instruction.h	252;"	d
+SIMDAndNoti	simd_instruction.h	396;"	d
+SIMDAndNoti	simd_instruction.h	475;"	d
+SIMDAndNoti	simd_instruction.h	66;"	d
+SIMDAndi	simd_instruction.h	250;"	d
+SIMDAndi	simd_instruction.h	394;"	d
+SIMDAndi	simd_instruction.h	473;"	d
+SIMDAndi	simd_instruction.h	64;"	d
+SIMDBlend	simd_instruction.h	174;"	d
+SIMDBlend	simd_instruction.h	316;"	d
+SIMDBlendV	simd_instruction.h	433;"	d
+SIMDBlendV	simd_instruction.h	509;"	d
+SIMDBlendV	simd_instruction.h	522;"	d
+SIMDBlendVi8	simd_instruction.h	434;"	d
+SIMDBlendVi8	simd_instruction.h	510;"	d
+SIMDBlendVi8	simd_instruction.h	523;"	d
+SIMDBlendi16	simd_instruction.h	176;"	d
+SIMDBlendi16	simd_instruction.h	536;"	d
+SIMDBlendi32	simd_instruction.h	177;"	d
+SIMDBlendi32	simd_instruction.h	319;"	d
+SIMDBlendi32	simd_instruction.h	537;"	d
+SIMDBlendi64	simd_instruction.h	178;"	d
+SIMDBlendi64	simd_instruction.h	320;"	d
+SIMDBlendi64	simd_instruction.h	538;"	d
+SIMDBlendi8	simd_instruction.h	175;"	d
+SIMDEqual	simd_instruction.h	412;"	d
+SIMDEqual	simd_instruction.h	486;"	d
+SIMDEqualM	simd_instruction.h	135;"	d
+SIMDEqualM	simd_instruction.h	277;"	d
+SIMDEquali16	simd_instruction.h	413;"	d
+SIMDEquali16	simd_instruction.h	488;"	d
+SIMDEquali16M	simd_instruction.h	137;"	d
+SIMDEquali32	simd_instruction.h	415;"	d
+SIMDEquali32	simd_instruction.h	489;"	d
+SIMDEquali32M	simd_instruction.h	138;"	d
+SIMDEquali32M	simd_instruction.h	280;"	d
+SIMDEquali64	simd_instruction.h	416;"	d
+SIMDEquali64	simd_instruction.h	511;"	d
+SIMDEquali64M	simd_instruction.h	139;"	d
+SIMDEquali64M	simd_instruction.h	281;"	d
+SIMDEquali8	simd_instruction.h	414;"	d
+SIMDEquali8	simd_instruction.h	487;"	d
+SIMDEquali8M	simd_instruction.h	136;"	d
+SIMDFloor	simd_instruction.h	422;"	d
+SIMDFloor	simd_instruction.h	512;"	d
+SIMDFree	simd_instruction.h	30;"	d
+SIMDGetIfGreateri16	simd_instruction.h	203;"	d
+SIMDGetIfGreateri16	simd_instruction.h	558;"	d
+SIMDGetIfGreateri32	simd_instruction.h	204;"	d
+SIMDGetIfGreateri32	simd_instruction.h	346;"	d
+SIMDGetIfGreateri32	simd_instruction.h	559;"	d
+SIMDGetIfGreateri64	simd_instruction.h	205;"	d
+SIMDGetIfGreateri64	simd_instruction.h	347;"	d
+SIMDGetIfGreateri64	simd_instruction.h	560;"	d
+SIMDGetIfGreateri8	simd_instruction.h	202;"	d
+SIMDGetIfGreateri8	simd_instruction.h	557;"	d
+SIMDGetIfLessi16	simd_instruction.h	208;"	d
+SIMDGetIfLessi16	simd_instruction.h	563;"	d
+SIMDGetIfLessi32	simd_instruction.h	209;"	d
+SIMDGetIfLessi32	simd_instruction.h	351;"	d
+SIMDGetIfLessi32	simd_instruction.h	564;"	d
+SIMDGetIfLessi64	simd_instruction.h	210;"	d
+SIMDGetIfLessi64	simd_instruction.h	352;"	d
+SIMDGetIfLessi64	simd_instruction.h	565;"	d
+SIMDGetIfLessi8	simd_instruction.h	207;"	d
+SIMDGetIfLessi8	simd_instruction.h	562;"	d
+SIMDGreaterThan	simd_instruction.h	417;"	d
+SIMDGreaterThan	simd_instruction.h	490;"	d
+SIMDGreaterThanOrEquali16M	simd_instruction.h	150;"	d
+SIMDGreaterThanOrEquali32M	simd_instruction.h	151;"	d
+SIMDGreaterThanOrEquali32M	simd_instruction.h	293;"	d
+SIMDGreaterThanOrEquali64M	simd_instruction.h	152;"	d
+SIMDGreaterThanOrEquali64M	simd_instruction.h	294;"	d
+SIMDGreaterThanOrEquali8M	simd_instruction.h	149;"	d
+SIMDGreaterThani16	simd_instruction.h	418;"	d
+SIMDGreaterThani16	simd_instruction.h	492;"	d
+SIMDGreaterThani16M	simd_instruction.h	146;"	d
+SIMDGreaterThani32	simd_instruction.h	420;"	d
+SIMDGreaterThani32	simd_instruction.h	493;"	d
+SIMDGreaterThani32M	simd_instruction.h	147;"	d
+SIMDGreaterThani32M	simd_instruction.h	289;"	d
+SIMDGreaterThani64	simd_instruction.h	421;"	d
+SIMDGreaterThani64M	simd_instruction.h	148;"	d
+SIMDGreaterThani64M	simd_instruction.h	290;"	d
+SIMDGreaterThani8	simd_instruction.h	419;"	d
+SIMDGreaterThani8	simd_instruction.h	491;"	d
+SIMDGreaterThani8M	simd_instruction.h	145;"	d
+SIMDLessThan	simd_instruction.h	494;"	d
+SIMDLessThanM	simd_instruction.h	153;"	d
+SIMDLessThanM	simd_instruction.h	295;"	d
+SIMDLessThanOrEqualM	simd_instruction.h	158;"	d
+SIMDLessThanOrEqualM	simd_instruction.h	300;"	d
+SIMDLessThanOrEquali16M	simd_instruction.h	160;"	d
+SIMDLessThanOrEquali32M	simd_instruction.h	161;"	d
+SIMDLessThanOrEquali32M	simd_instruction.h	303;"	d
+SIMDLessThanOrEquali64M	simd_instruction.h	162;"	d
+SIMDLessThanOrEquali64M	simd_instruction.h	304;"	d
+SIMDLessThanOrEquali8M	simd_instruction.h	159;"	d
+SIMDLessThani16	simd_instruction.h	496;"	d
+SIMDLessThani16M	simd_instruction.h	155;"	d
+SIMDLessThani32	simd_instruction.h	497;"	d
+SIMDLessThani32M	simd_instruction.h	156;"	d
+SIMDLessThani32M	simd_instruction.h	298;"	d
+SIMDLessThani64M	simd_instruction.h	157;"	d
+SIMDLessThani64M	simd_instruction.h	299;"	d
+SIMDLessThani8	simd_instruction.h	495;"	d
+SIMDLessThani8M	simd_instruction.h	154;"	d
+SIMDLoad	simd_instruction.h	227;"	d
+SIMDLoad	simd_instruction.h	365;"	d
+SIMDLoad	simd_instruction.h	41;"	d
+SIMDLoad	simd_instruction.h	446;"	d
+SIMDLoadi	simd_instruction.h	228;"	d
+SIMDLoadi	simd_instruction.h	367;"	d
+SIMDLoadi	simd_instruction.h	42;"	d
+SIMDLoadi	simd_instruction.h	448;"	d
+SIMDMalloc	simd_instruction.h	/^static void *SIMDMalloc(size_t size, size_t align) {$/;"	f
+SIMDMax	simd_instruction.h	163;"	d
+SIMDMax	simd_instruction.h	305;"	d
+SIMDMax	simd_instruction.h	423;"	d
+SIMDMax	simd_instruction.h	498;"	d
+SIMDMaxi16	simd_instruction.h	165;"	d
+SIMDMaxi16	simd_instruction.h	425;"	d
+SIMDMaxi16	simd_instruction.h	499;"	d
+SIMDMaxi32	simd_instruction.h	166;"	d
+SIMDMaxi32	simd_instruction.h	308;"	d
+SIMDMaxi32	simd_instruction.h	426;"	d
+SIMDMaxi32	simd_instruction.h	515;"	d
+SIMDMaxi32	simd_instruction.h	526;"	d
+SIMDMaxi64	simd_instruction.h	167;"	d
+SIMDMaxi64	simd_instruction.h	309;"	d
+SIMDMaxi64	simd_instruction.h	427;"	d
+SIMDMaxi8	simd_instruction.h	164;"	d
+SIMDMaxi8	simd_instruction.h	424;"	d
+SIMDMaxi8	simd_instruction.h	513;"	d
+SIMDMaxi8	simd_instruction.h	524;"	d
+SIMDMin	simd_instruction.h	168;"	d
+SIMDMin	simd_instruction.h	310;"	d
+SIMDMin	simd_instruction.h	428;"	d
+SIMDMin	simd_instruction.h	500;"	d
+SIMDMini16	simd_instruction.h	170;"	d
+SIMDMini16	simd_instruction.h	430;"	d
+SIMDMini16	simd_instruction.h	501;"	d
+SIMDMini32	simd_instruction.h	171;"	d
+SIMDMini32	simd_instruction.h	313;"	d
+SIMDMini32	simd_instruction.h	431;"	d
+SIMDMini32	simd_instruction.h	516;"	d
+SIMDMini32	simd_instruction.h	527;"	d
+SIMDMini64	simd_instruction.h	172;"	d
+SIMDMini64	simd_instruction.h	314;"	d
+SIMDMini8	simd_instruction.h	169;"	d
+SIMDMini8	simd_instruction.h	429;"	d
+SIMDMini8	simd_instruction.h	514;"	d
+SIMDMini8	simd_instruction.h	525;"	d
+SIMDMul	simd_instruction.h	247;"	d
+SIMDMul	simd_instruction.h	391;"	d
+SIMDMul	simd_instruction.h	470;"	d
+SIMDMul	simd_instruction.h	61;"	d
+SIMDMuli	simd_instruction.h	392;"	d
+SIMDMuli	simd_instruction.h	471;"	d
+SIMDMuli32	simd_instruction.h	248;"	d
+SIMDMuli32	simd_instruction.h	62;"	d
+SIMDNotEqualM	simd_instruction.h	140;"	d
+SIMDNotEqualM	simd_instruction.h	282;"	d
+SIMDNotEquali16M	simd_instruction.h	142;"	d
+SIMDNotEquali32M	simd_instruction.h	143;"	d
+SIMDNotEquali32M	simd_instruction.h	285;"	d
+SIMDNotEquali64M	simd_instruction.h	144;"	d
+SIMDNotEquali64M	simd_instruction.h	286;"	d
+SIMDNotEquali8M	simd_instruction.h	141;"	d
+SIMDOr	simd_instruction.h	253;"	d
+SIMDOr	simd_instruction.h	397;"	d
+SIMDOr	simd_instruction.h	476;"	d
+SIMDOr	simd_instruction.h	67;"	d
+SIMDOri	simd_instruction.h	254;"	d
+SIMDOri	simd_instruction.h	398;"	d
+SIMDOri	simd_instruction.h	477;"	d
+SIMDOri	simd_instruction.h	68;"	d
+SIMDSet	simd_instruction.h	368;"	d
+SIMDSetIfEquali16	simd_instruction.h	187;"	d
+SIMDSetIfEquali16	simd_instruction.h	542;"	d
+SIMDSetIfEquali32	simd_instruction.h	188;"	d
+SIMDSetIfEquali32	simd_instruction.h	330;"	d
+SIMDSetIfEquali32	simd_instruction.h	543;"	d
+SIMDSetIfEquali64	simd_instruction.h	189;"	d
+SIMDSetIfEquali64	simd_instruction.h	331;"	d
+SIMDSetIfEquali64	simd_instruction.h	544;"	d
+SIMDSetIfEquali8	simd_instruction.h	186;"	d
+SIMDSetIfEquali8	simd_instruction.h	541;"	d
+SIMDSetIfGreateri16	simd_instruction.h	192;"	d
+SIMDSetIfGreateri16	simd_instruction.h	547;"	d
+SIMDSetIfGreateri32	simd_instruction.h	193;"	d
+SIMDSetIfGreateri32	simd_instruction.h	335;"	d
+SIMDSetIfGreateri32	simd_instruction.h	548;"	d
+SIMDSetIfGreateri64	simd_instruction.h	194;"	d
+SIMDSetIfGreateri64	simd_instruction.h	336;"	d
+SIMDSetIfGreateri64	simd_instruction.h	549;"	d
+SIMDSetIfGreateri8	simd_instruction.h	191;"	d
+SIMDSetIfGreateri8	simd_instruction.h	546;"	d
+SIMDSetIfLessi16	simd_instruction.h	197;"	d
+SIMDSetIfLessi16	simd_instruction.h	552;"	d
+SIMDSetIfLessi32	simd_instruction.h	198;"	d
+SIMDSetIfLessi32	simd_instruction.h	340;"	d
+SIMDSetIfLessi32	simd_instruction.h	553;"	d
+SIMDSetIfLessi64	simd_instruction.h	199;"	d
+SIMDSetIfLessi64	simd_instruction.h	341;"	d
+SIMDSetIfLessi64	simd_instruction.h	554;"	d
+SIMDSetIfLessi8	simd_instruction.h	196;"	d
+SIMDSetIfLessi8	simd_instruction.h	551;"	d
+SIMDSetOne	simd_instruction.h	232;"	d
+SIMDSetOne	simd_instruction.h	376;"	d
+SIMDSetOne	simd_instruction.h	453;"	d
+SIMDSetOne	simd_instruction.h	46;"	d
+SIMDSetOnei16	simd_instruction.h	234;"	d
+SIMDSetOnei16	simd_instruction.h	378;"	d
+SIMDSetOnei16	simd_instruction.h	456;"	d
+SIMDSetOnei16	simd_instruction.h	48;"	d
+SIMDSetOnei32	simd_instruction.h	235;"	d
+SIMDSetOnei32	simd_instruction.h	379;"	d
+SIMDSetOnei32	simd_instruction.h	457;"	d
+SIMDSetOnei32	simd_instruction.h	49;"	d
+SIMDSetOnei64	simd_instruction.h	236;"	d
+SIMDSetOnei64	simd_instruction.h	380;"	d
+SIMDSetOnei64	simd_instruction.h	458;"	d
+SIMDSetOnei64	simd_instruction.h	50;"	d
+SIMDSetOnei8	simd_instruction.h	233;"	d
+SIMDSetOnei8	simd_instruction.h	377;"	d
+SIMDSetOnei8	simd_instruction.h	455;"	d
+SIMDSetOnei8	simd_instruction.h	47;"	d
+SIMDSetZero	simd_instruction.h	230;"	d
+SIMDSetZero	simd_instruction.h	374;"	d
+SIMDSetZero	simd_instruction.h	44;"	d
+SIMDSetZero	simd_instruction.h	454;"	d
+SIMDSetZeroi	simd_instruction.h	231;"	d
+SIMDSetZeroi	simd_instruction.h	375;"	d
+SIMDSetZeroi	simd_instruction.h	459;"	d
+SIMDSetZeroi	simd_instruction.h	45;"	d
+SIMDSeti128	simd_instruction.h	373;"	d
+SIMDSeti16	simd_instruction.h	370;"	d
+SIMDSeti16	simd_instruction.h	450;"	d
+SIMDSeti32	simd_instruction.h	371;"	d
+SIMDSeti32	simd_instruction.h	451;"	d
+SIMDSeti64	simd_instruction.h	372;"	d
+SIMDSeti64	simd_instruction.h	452;"	d
+SIMDSeti8	simd_instruction.h	369;"	d
+SIMDSeti8	simd_instruction.h	449;"	d
+SIMDShiftLeft	simd_instruction.h	399;"	d
+SIMDShiftLeft	simd_instruction.h	478;"	d
+SIMDShiftLeft	simd_instruction.h	69;"	d
+SIMDShiftLeftOnei16	simd_instruction.h	129;"	d
+SIMDShiftLeftOnei16	simd_instruction.h	406;"	d
+SIMDShiftLeftOnei16	simd_instruction.h	480;"	d
+SIMDShiftLeftOnei32	simd_instruction.h	130;"	d
+SIMDShiftLeftOnei32	simd_instruction.h	272;"	d
+SIMDShiftLeftOnei32	simd_instruction.h	407;"	d
+SIMDShiftLeftOnei32	simd_instruction.h	481;"	d
+SIMDShiftLeftOnei64	simd_instruction.h	131;"	d
+SIMDShiftLeftOnei64	simd_instruction.h	273;"	d
+SIMDShiftLeftOnei64	simd_instruction.h	408;"	d
+SIMDShiftLeftOnei64	simd_instruction.h	482;"	d
+SIMDShiftOneNi16	simd_abpoa_align.cu	18;"	d	file:
+SIMDShiftOneNi32	simd_abpoa_align.cu	19;"	d	file:
+SIMDShiftOneNi64	simd_abpoa_align.cu	20;"	d	file:
+SIMDShiftOneNi8	simd_abpoa_align.cu	17;"	d	file:
+SIMDShiftRight	simd_instruction.h	403;"	d
+SIMDShiftRight	simd_instruction.h	479;"	d
+SIMDShiftRight	simd_instruction.h	99;"	d
+SIMDShiftRightOnei16	simd_instruction.h	132;"	d
+SIMDShiftRightOnei16	simd_instruction.h	409;"	d
+SIMDShiftRightOnei16	simd_instruction.h	483;"	d
+SIMDShiftRightOnei32	simd_instruction.h	133;"	d
+SIMDShiftRightOnei32	simd_instruction.h	275;"	d
+SIMDShiftRightOnei32	simd_instruction.h	410;"	d
+SIMDShiftRightOnei32	simd_instruction.h	484;"	d
+SIMDShiftRightOnei64	simd_instruction.h	134;"	d
+SIMDShiftRightOnei64	simd_instruction.h	276;"	d
+SIMDShiftRightOnei64	simd_instruction.h	411;"	d
+SIMDShiftRightOnei64	simd_instruction.h	485;"	d
+SIMDStore	simd_instruction.h	225;"	d
+SIMDStore	simd_instruction.h	364;"	d
+SIMDStore	simd_instruction.h	39;"	d
+SIMDStore	simd_instruction.h	445;"	d
+SIMDStorei	simd_instruction.h	226;"	d
+SIMDStorei	simd_instruction.h	366;"	d
+SIMDStorei	simd_instruction.h	40;"	d
+SIMDStorei	simd_instruction.h	447;"	d
+SIMDSub	simd_instruction.h	242;"	d
+SIMDSub	simd_instruction.h	386;"	d
+SIMDSub	simd_instruction.h	465;"	d
+SIMDSub	simd_instruction.h	56;"	d
+SIMDSubi16	simd_instruction.h	388;"	d
+SIMDSubi16	simd_instruction.h	467;"	d
+SIMDSubi16	simd_instruction.h	58;"	d
+SIMDSubi32	simd_instruction.h	245;"	d
+SIMDSubi32	simd_instruction.h	389;"	d
+SIMDSubi32	simd_instruction.h	468;"	d
+SIMDSubi32	simd_instruction.h	59;"	d
+SIMDSubi64	simd_instruction.h	246;"	d
+SIMDSubi64	simd_instruction.h	390;"	d
+SIMDSubi64	simd_instruction.h	469;"	d
+SIMDSubi64	simd_instruction.h	60;"	d
+SIMDSubi8	simd_instruction.h	387;"	d
+SIMDSubi8	simd_instruction.h	466;"	d
+SIMDSubi8	simd_instruction.h	57;"	d
+SIMDTotalBytes	simd_abpoa_align.cu	27;"	d	file:
+SIMDTotalBytes	simd_abpoa_align.cu	33;"	d	file:
+SIMDTotalBytes	simd_abpoa_align.cu	39;"	d	file:
+SIMDZero	simd_instruction.h	229;"	d
+SIMDZero	simd_instruction.h	43;"	d
+SIMD_ABPOA_ALIGN_H	simd_abpoa_align.h	2;"	d
+SIMD_AVX	simd_instruction.h	25;"	d
+SIMD_AVX2	simd_instruction.h	26;"	d
+SIMD_AVX512BW	simd_instruction.h	28;"	d
+SIMD_AVX512F	simd_instruction.h	27;"	d
+SIMD_INSTRUCTION_H	simd_instruction.h	10;"	d
+SIMD_SET_F	simd_abpoa_align.cu	611;"	d	file:
+SIMD_SSE	simd_instruction.h	19;"	d
+SIMD_SSE2	simd_instruction.h	20;"	d
+SIMD_SSE3	simd_instruction.h	21;"	d
+SIMD_SSE41	simd_instruction.h	23;"	d
+SIMD_SSE42	simd_instruction.h	24;"	d
+SIMD_SSSE3	simd_instruction.h	22;"	d
+SIMD_para_t	simd_abpoa_align.cu	/^} SIMD_para_t;$/;"	t	typeref:struct:__anon8	file:
+SIMDf	simd_instruction.h	/^typedef __m128 SIMDf;   \/\/for floats$/;"	t
+SIMDf	simd_instruction.h	/^typedef __m256 SIMDf;  \/\/for floats$/;"	t
+SIMDf	simd_instruction.h	/^typedef __m512 SIMDf;$/;"	t
+SIMDi	simd_instruction.h	/^typedef __m128i SIMDi; \/\/for integers$/;"	t
+SIMDi	simd_instruction.h	/^typedef __m256i SIMDi; \/\/for integers$/;"	t
+SIMDi	simd_instruction.h	/^typedef __m512i SIMDi;$/;"	t
+STRIKE	utils.h	269;"	d
+UNDERLINE	utils.h	265;"	d
+UTILS_H	utils.h	29;"	d
+VERSION	abpoa.c	/^char VERSION[20] = "1.0.3";$/;"	v
+WHITE	utils.h	263;"	d
+YELLOW	utils.h	255;"	d
+_PRINT_FORMAT_H_	utils.h	245;"	d
+_XCR_XFEATURE_ENABLED_MASK	simd_check.c	66;"	d	file:
+__AC_KDQ_H	kdq.h	2;"	d
+__KDQ_IMPL	kdq.h	19;"	d
+__KDQ_TYPE	kdq.h	7;"	d
+__KSEQ_BASIC	kseq.h	155;"	d
+__KSEQ_COPY	kseq.h	216;"	d
+__KSEQ_READ	kseq.h	175;"	d
+__KSEQ_TYPE	kseq.h	224;"	d
+__KS_BASIC	kseq.h	54;"	d
+__KS_GETC	kseq.h	70;"	d
+__KS_GETUNTIL	kseq.h	94;"	d
+__KS_TYPE	kseq.h	44;"	d
+__kstring_t	kseq.h	/^typedef struct __kstring_t {$/;"	s
+_bA	abpoa.c	20;"	d	file:
+_bO	abpoa.c	19;"	d	file:
+_bP	abpoa.c	18;"	d	file:
+_ba	abpoa.c	16;"	d	file:
+_bb	abpoa.c	17;"	d	file:
+_bin_insert	utils.h	190;"	d
+_bin_insert_idx	utils.h	163;"	d
+_bin_search	utils.h	204;"	d
+_err_calloc	utils.h	106;"	d
+_err_fatal_simple	utils.c	/^void _err_fatal_simple(const char *func, const char *msg)$/;"	f
+_err_fatal_simple_core	utils.c	/^void _err_fatal_simple_core(const char *func, const char *msg)$/;"	f
+_err_malloc	utils.h	105;"	d
+_err_realloc	utils.h	107;"	d
+_err_simple_func_printf	utils.h	61;"	d
+_insert	utils.h	147;"	d
+_realloc	utils.h	138;"	d
+_sim_insert	utils.h	140;"	d
+_simd_p16	simd_abpoa_align.cu	/^SIMD_para_t _simd_p16 = {128, 16, 3,  8, 16, -1};$/;"	v
+_simd_p16	simd_abpoa_align.cu	/^SIMD_para_t _simd_p16 = {256, 16, 4, 16, 32, -1};$/;"	v
+_simd_p16	simd_abpoa_align.cu	/^SIMD_para_t _simd_p16 = {512, 16, 5, 32, 64, -1};$/;"	v
+_simd_p32	simd_abpoa_align.cu	/^SIMD_para_t _simd_p32 = {128, 32, 2,  4, 16, -1};$/;"	v
+_simd_p32	simd_abpoa_align.cu	/^SIMD_para_t _simd_p32 = {256, 32, 3,  8, 32, -1};$/;"	v
+_simd_p32	simd_abpoa_align.cu	/^SIMD_para_t _simd_p32 = {512, 32, 4, 16, 64, -1};$/;"	v
+_simd_p64	simd_abpoa_align.cu	/^SIMD_para_t _simd_p64 = {128, 64, 1,  2, 16, -1};$/;"	v
+_simd_p64	simd_abpoa_align.cu	/^SIMD_para_t _simd_p64 = {256, 64, 2,  4, 32, -1};$/;"	v
+_simd_p64	simd_abpoa_align.cu	/^SIMD_para_t _simd_p64 = {512, 64, 3,  8, 64, -1};$/;"	v
+_simd_p8	simd_abpoa_align.cu	/^SIMD_para_t _simd_p8  = {128,  8, 4, 16, 16, -1};$/;"	v
+_simd_p8	simd_abpoa_align.cu	/^SIMD_para_t _simd_p8  = {256,  8, 5, 32, 32, -1};$/;"	v
+_simd_p8	simd_abpoa_align.cu	/^SIMD_para_t _simd_p8  = {512,  8, 6, 64, 64, -1};$/;"	v
+_uni_realloc	utils.h	127;"	d
+a	utils.h	/^typedef struct { size_t n, m; pair64_t *a; } pair64_v;$/;"	m	struct:__anon11
+a	utils.h	/^typedef struct { size_t n, m; uint64_t *a; } uint64_v;$/;"	m	struct:__anon10
+abg	abpoa.h	/^    abpoa_graph_t *abg;$/;"	m	struct:__anon6
+abm	abpoa.h	/^    abpoa_simd_matrix_t *abm;$/;"	m	struct:__anon6
+abpoa_BFS_set_node_index	abpoa_graph.c	/^void abpoa_BFS_set_node_index(abpoa_graph_t *graph, int src_id, int sink_id) {$/;"	f
+abpoa_BFS_set_node_remain	abpoa_graph.c	/^void abpoa_BFS_set_node_remain(abpoa_graph_t *graph, int src_id, int sink_id) {$/;"	f
+abpoa_DFS_set_msa_rank	abpoa_graph.c	/^void abpoa_DFS_set_msa_rank(abpoa_graph_t *graph, int src_id, int sink_id, int *in_degree) {$/;"	f
+abpoa_add_graph_aligned_node	abpoa_graph.c	/^void abpoa_add_graph_aligned_node(abpoa_t *ab, int node_id, int aligned_id) {$/;"	f
+abpoa_add_graph_aligned_node1	abpoa_graph.c	/^void abpoa_add_graph_aligned_node1(abpoa_node_t *node, int aligned_id) {$/;"	f
+abpoa_add_graph_alignment	abpoa_graph.c	/^int abpoa_add_graph_alignment(abpoa_t *ab, abpoa_para_t *abpt, uint8_t *seq, int seq_l, int n_cigar, abpoa_cigar_t *abpoa_cigar, int read_id, int tot_read_n) {$/;"	f
+abpoa_add_graph_edge	abpoa_graph.c	/^int abpoa_add_graph_edge(abpoa_t *ab, int from_id, int to_id, int check_edge, uint8_t add_read_id, int read_id, int read_ids_n) {$/;"	f
+abpoa_add_graph_node	abpoa_graph.c	/^int abpoa_add_graph_node(abpoa_t *ab, uint8_t base) {$/;"	f
+abpoa_add_graph_sequence	abpoa_graph.c	/^void abpoa_add_graph_sequence(abpoa_t *ab, uint8_t *seq, int seq_l, int start, int end, uint8_t add_read_id, int read_id, int read_ids_n) {$/;"	f
+abpoa_align_sequence_to_graph	abpoa_align.c	/^int abpoa_align_sequence_to_graph(abpoa_t *ab, abpoa_para_t *abpt, uint8_t *query, int qlen, abpoa_res_t *res) {$/;"	f
+abpoa_cigar_t	abpoa.h	47;"	d
+abpoa_core	abpoa.c	121;"	d	file:
+abpoa_diploid_heaviest_column	abpoa_graph.c	/^void abpoa_diploid_heaviest_column(abpoa_graph_t *graph, int src_id, int sink_id, int seq_n, double min_freq, FILE *out_fp, uint8_t ***cons_seq, int **cons_l, int *cons_n) {$/;"	f
+abpoa_diploid_ids	abpoa_graph.c	/^int abpoa_diploid_ids(uint64_t ***read_ids, int **rc_weight, int msa_l, int seq_n, double min_freq, int read_ids_n, int **clu_read_ids, int *clu_read_ids_n) {$/;"	f
+abpoa_dump_pog	abpoa_plot.c	/^int abpoa_dump_pog(abpoa_t *ab, abpoa_para_t *abpt) {$/;"	f
+abpoa_free	abpoa_graph.c	/^void abpoa_free(abpoa_t *ab, abpoa_para_t *abpt) {$/;"	f
+abpoa_free_graph	abpoa_graph.c	/^void abpoa_free_graph(abpoa_graph_t *graph, abpoa_para_t *abpt) {$/;"	f
+abpoa_free_node	abpoa_graph.c	/^void abpoa_free_node(abpoa_para_t *abpt, abpoa_node_t *node, int n) {$/;"	f
+abpoa_free_para	abpoa_align.c	/^void abpoa_free_para(abpoa_para_t *abpt) {$/;"	f
+abpoa_generate_consensus	abpoa_graph.c	/^int abpoa_generate_consensus(abpoa_t *ab, abpoa_para_t *abpt, int seq_n, FILE *out_fp, uint8_t ***cons_seq, int **cons_l, int *cons_n) {$/;"	f
+abpoa_generate_consensus_core	abpoa_graph.c	/^void abpoa_generate_consensus_core(abpoa_graph_t *graph, int path_start, int sink_id, int *max_out_id) {$/;"	f
+abpoa_generate_rc_msa	abpoa_graph.c	/^void abpoa_generate_rc_msa(abpoa_t *ab, int seq_n, FILE *out_fp, uint8_t ***msa_seq, int *msa_l) {$/;"	f
+abpoa_get_aligned_id	abpoa_graph.c	/^int abpoa_get_aligned_id(abpoa_graph_t *graph, int node_id, uint8_t base) {$/;"	f
+abpoa_graph_index_to_node_id	abpoa_graph.h	/^static inline int abpoa_graph_index_to_node_id(abpoa_graph_t *graph, int index_i) {$/;"	f
+abpoa_graph_node_id_to_index	abpoa_graph.h	/^static inline int abpoa_graph_node_id_to_index(abpoa_graph_t *graph, int node_id) {$/;"	f
+abpoa_graph_node_id_to_max_pos_left	abpoa_graph.h	/^static inline int abpoa_graph_node_id_to_max_pos_left(abpoa_graph_t *graph, int node_id) {$/;"	f
+abpoa_graph_node_id_to_max_pos_right	abpoa_graph.h	/^static inline int abpoa_graph_node_id_to_max_pos_right(abpoa_graph_t *graph, int node_id) {$/;"	f
+abpoa_graph_node_id_to_max_remain	abpoa_graph.h	/^static inline int abpoa_graph_node_id_to_max_remain(abpoa_graph_t *graph, int node_id) {$/;"	f
+abpoa_graph_node_id_to_msa_rank	abpoa_graph.h	/^static inline int abpoa_graph_node_id_to_msa_rank(abpoa_graph_t *graph, int node_id) {$/;"	f
+abpoa_graph_t	abpoa.h	/^} abpoa_graph_t;$/;"	t	typeref:struct:__anon4
+abpoa_heaviest_bundling	abpoa_graph.c	/^void abpoa_heaviest_bundling(abpoa_graph_t *graph,  int src_id, int sink_id, int *out_degree) {$/;"	f
+abpoa_heaviest_column	abpoa_graph.c	/^void abpoa_heaviest_column(abpoa_graph_t *graph, int src_id, int sink_id, int seq_n) {$/;"	f
+abpoa_heaviest_column_consensus	abpoa_graph.c	/^void abpoa_heaviest_column_consensus(abpoa_graph_t *graph, int **rc_weight, int msa_l, int seq_n) {$/;"	f
+abpoa_heaviest_column_multip_consensus	abpoa_graph.c	/^void abpoa_heaviest_column_multip_consensus(uint64_t ***read_ids, int **cluster_ids, int *cluster_ids_n, int multip, int read_ids_n, int msa_l, FILE *out_fp, uint8_t ***_cons_seq, int **_cons_l, int *_cons_n) {$/;"	f
+abpoa_init	abpoa_graph.c	/^abpoa_t *abpoa_init(void) {$/;"	f
+abpoa_init_graph	abpoa_graph.c	/^abpoa_graph_t *abpoa_init_graph(void) {$/;"	f
+abpoa_init_node	abpoa_graph.c	/^abpoa_node_t *abpoa_init_node(int n) {$/;"	f
+abpoa_init_para	abpoa_align.c	/^abpoa_para_t *abpoa_init_para(void) {$/;"	f
+abpoa_long_opt	abpoa.c	/^const struct option abpoa_long_opt [] = {$/;"	v	typeref:struct:option
+abpoa_main	abpoa.c	/^int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){$/;"	f
+abpoa_msa	abpoa_align.c	/^int abpoa_msa(abpoa_t *ab, abpoa_para_t *abpt, int n_seqs, int *seq_lens, uint8_t **seqs, FILE *out_fp, uint8_t ***cons_seq, int **cons_l, int *cons_n, uint8_t ***msa_seq, int *msa_l) {$/;"	f
+abpoa_node_t	abpoa.h	/^} abpoa_node_t;$/;"	t	typeref:struct:__anon3
+abpoa_para_t	abpoa.h	/^} abpoa_para_t;$/;"	t	typeref:struct:__anon2
+abpoa_post_set_para	abpoa_align.c	/^void abpoa_post_set_para(abpoa_para_t *abpt) {$/;"	f
+abpoa_print_cigar	abpoa_align.h	/^static inline void abpoa_print_cigar(int n_cigar, abpoa_cigar_t *cigar, abpoa_graph_t *graph) {$/;"	f
+abpoa_push_cigar	abpoa_align.h	/^static inline abpoa_cigar_t *abpoa_push_cigar(int *n_cigar, int *m_cigar, abpoa_cigar_t *cigar, int op, int len, int32_t node_id, int32_t query_id) {$/;"	f
+abpoa_read_seq	abpoa.c	/^int abpoa_read_seq(kseq_t *read_seq, int chunk_read_n)$/;"	f
+abpoa_realloc_graph_edge	abpoa_graph.c	/^abpoa_graph_t *abpoa_realloc_graph_edge(abpoa_graph_t *graph, int io, int id) {$/;"	f
+abpoa_realloc_graph_node	abpoa_graph.c	/^abpoa_graph_t *abpoa_realloc_graph_node(abpoa_graph_t *graph) {$/;"	f
+abpoa_res_t	abpoa.h	/^} abpoa_res_t;$/;"	t	typeref:struct:__anon1
+abpoa_reset_graph	abpoa_graph.c	/^void abpoa_reset_graph(abpoa_t *ab, abpoa_para_t *abpt, int qlen) {$/;"	f
+abpoa_reverse_cigar	abpoa_align.h	/^static inline abpoa_cigar_t *abpoa_reverse_cigar(int n_cigar, abpoa_cigar_t *cigar) {$/;"	f
+abpoa_set_gap_mode	abpoa_align.c	/^void abpoa_set_gap_mode(abpoa_para_t *abpt) {$/;"	f
+abpoa_set_graph_node	abpoa_graph.c	/^void abpoa_set_graph_node(abpoa_graph_t *graph, int node_i) {$/;"	f
+abpoa_set_msa_rank	abpoa_graph.c	/^void abpoa_set_msa_rank(abpoa_graph_t *graph, int src_id, int sink_id) {$/;"	f
+abpoa_set_msa_seq	abpoa_graph.c	/^void abpoa_set_msa_seq(abpoa_node_t node, int rank, uint8_t **msa_seq) {$/;"	f
+abpoa_set_read_id	abpoa_graph.c	/^void abpoa_set_read_id(uint64_t *read_ids, int read_id) {$/;"	f
+abpoa_set_row_column_ids_weight	abpoa_graph.c	/^void abpoa_set_row_column_ids_weight(abpoa_graph_t *graph, uint64_t ***read_ids, int **rc_weight, int msa_l, int seq_n, int read_ids_n) {$/;"	f
+abpoa_set_row_column_weight	abpoa_graph.c	/^void abpoa_set_row_column_weight(abpoa_graph_t *graph, int **rc_weight) {$/;"	f
+abpoa_simd_matrix_t	abpoa.h	/^} abpoa_simd_matrix_t;$/;"	t	typeref:struct:__anon5
+abpoa_store_consensus	abpoa_graph.c	/^void abpoa_store_consensus(abpoa_graph_t *graph, uint8_t ***cons_seq, int **cons_l) {$/;"	f
+abpoa_t	abpoa.h	/^} abpoa_t;$/;"	t	typeref:struct:__anon6
+abpoa_topological_sort	abpoa_graph.c	/^void abpoa_topological_sort(abpoa_t *ab, abpoa_para_t *abpt) {$/;"	f
+abpoa_traverse_min_flow	abpoa_graph.c	/^void abpoa_traverse_min_flow(abpoa_graph_t *graph,  int src_id, int sink_id, int *out_degree) {$/;"	f
+abpoa_usage	abpoa.c	/^int abpoa_usage(void)$/;"	f
+add_het_read_ids	abpoa_graph.c	/^void add_het_read_ids(int *init, uint64_t **het_read_ids, uint8_t **het_cons_base, uint64_t **read_ids, int het_n, int *multip_i, int read_ids_n) {$/;"	f
+align_mode	abpoa.h	/^    int align_mode, gap_mode, cons_agrm;$/;"	m	struct:__anon2
+aligned_node_id	abpoa.h	/^    int aligned_node_n, aligned_node_m, *aligned_node_id; \/\/ mismatch; aligned node will have same rank$/;"	m	struct:__anon3
+aligned_node_m	abpoa.h	/^    int aligned_node_n, aligned_node_m, *aligned_node_id; \/\/ mismatch; aligned node will have same rank$/;"	m	struct:__anon3
+aligned_node_n	abpoa.h	/^    int aligned_node_n, aligned_node_m, *aligned_node_id; \/\/ mismatch; aligned node will have same rank$/;"	m	struct:__anon3
+base	abpoa.h	/^    uint8_t base; \/\/ 0~m$/;"	m	struct:__anon3
+bit_table16	abpoa.h	/^char bit_table16[65536];$/;"	v
+bits_n	simd_abpoa_align.cu	/^    const int reg_n, bits_n, log_num, num_of_value, size;$/;"	m	struct:__anon8	file:
+com_nst_nt256_table	seq.h	/^const char com_nst_nt256_table[256] = {$/;"	v
+com_nst_nt4_table	seq.h	/^unsigned char com_nst_nt4_table[256] = {$/;"	v
+cons_agrm	abpoa.h	/^    int align_mode, gap_mode, cons_agrm;$/;"	m	struct:__anon2
+cons_l	abpoa.h	/^    int cons_l, cons_m; uint8_t *cons_seq;$/;"	m	struct:__anon4
+cons_m	abpoa.h	/^    int cons_l, cons_m; uint8_t *cons_seq;$/;"	m	struct:__anon4
+cons_seq	abpoa.h	/^    int cons_l, cons_m; uint8_t *cons_seq;$/;"	m	struct:__anon4
+cpuid	simd_check.c	/^static inline void cpuid(int32_t out[4], int32_t x) {$/;"	f	file:
+cputime	utils.c	/^double cputime()$/;"	f
+debug_simd_abpoa_print_cg_matrix_row	simd_abpoa_align.cu	61;"	d	file:
+detect_OS_AVX	simd_check.c	/^int detect_OS_AVX(){ \/\/  Copied from: http:\/\/stackoverflow.com\/a\/22521619\/922184$/;"	f
+detect_OS_AVX512	simd_check.c	/^int detect_OS_AVX512(){$/;"	f
+detect_host	simd_check.c	/^void detect_host(){$/;"	f
+dp_beg	abpoa.h	/^    int *dp_beg, *dp_end, *dp_beg_sn, *dp_end_sn; int rang_m; \/\/ if band : based on (node_m)$/;"	m	struct:__anon5
+dp_beg_sn	abpoa.h	/^    int *dp_beg, *dp_end, *dp_beg_sn, *dp_end_sn; int rang_m; \/\/ if band : based on (node_m)$/;"	m	struct:__anon5
+dp_end	abpoa.h	/^    int *dp_beg, *dp_end, *dp_beg_sn, *dp_end_sn; int rang_m; \/\/ if band : based on (node_m)$/;"	m	struct:__anon5
+dp_end_sn	abpoa.h	/^    int *dp_beg, *dp_end, *dp_beg_sn, *dp_end_sn; int rang_m; \/\/ if band : based on (node_m)$/;"	m	struct:__anon5
+end_bonus	abpoa.h	/^    int zdrop, end_bonus; \/\/ from minimap2$/;"	m	struct:__anon2
+err_calloc	utils.c	/^void *err_calloc(const char *func, size_t n, size_t s)$/;"	f
+err_fatal	utils.c	/^void err_fatal(const char *header, const char *fmt, ...)$/;"	f
+err_fatal_core	utils.c	/^void err_fatal_core(const char *header, const char *fmt, ...)$/;"	f
+err_fatal_simple	utils.h	52;"	d
+err_fatal_simple_core	utils.h	53;"	d
+err_fclose	utils.c	/^int err_fclose(FILE *stream) $/;"	f
+err_fflush	utils.c	/^int err_fflush(FILE *stream) $/;"	f
+err_fgets	utils.c	/^void err_fgets(char *buff, size_t s, FILE *fp)$/;"	f
+err_fprintf	utils.c	/^int err_fprintf(FILE *stream, const char *format, ...) $/;"	f
+err_fputc	utils.c	/^int err_fputc(int c, FILE *stream)$/;"	f
+err_fputs	utils.c	/^int err_fputs(const char *s, FILE *stream)$/;"	f
+err_fread_noeof	utils.c	/^size_t err_fread_noeof(void *ptr, size_t size, size_t nmemb, FILE *stream)$/;"	f
+err_fseek	utils.c	/^int err_fseek(FILE *stream, long offset, int whence)$/;"	f
+err_ftell	utils.c	/^long err_ftell(FILE *stream)$/;"	f
+err_func_format_printf	utils.c	/^int err_func_format_printf(const char *func, const char *format, ...)$/;"	f
+err_func_printf	utils.c	/^int err_func_printf(const char *func, const char *format, ...)$/;"	f
+err_fwrite	utils.c	/^size_t err_fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)$/;"	f
+err_gzclose	utils.c	/^int err_gzclose(gzFile file)$/;"	f
+err_gzread	utils.c	/^int err_gzread(gzFile file, void *ptr, unsigned int len)$/;"	f
+err_malloc	utils.c	/^void *err_malloc(const char *func, size_t s)$/;"	f
+err_printf	utils.c	/^int err_printf(const char *format, ...) $/;"	f
+err_putchar	utils.h	97;"	d
+err_puts	utils.c	/^int err_puts(const char *s)$/;"	f
+err_realloc	utils.c	/^void *err_realloc(const char *func, void *p, size_t s)$/;"	f
+err_rewind	utils.h	86;"	d
+err_xreopen_core	utils.c	/^FILE *err_xreopen_core(const char *func, const char *fn, const char *mode, FILE *fp)$/;"	f
+err_xzopen_core	utils.c	/^gzFile err_xzopen_core(const char *func, const char *fn, const char *mode)$/;"	f
+gap_ext1	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+gap_ext2	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+gap_mode	abpoa.h	/^    int align_mode, gap_mode, cons_agrm;$/;"	m	struct:__anon2
+gap_open1	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+gap_open2	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+gen_simple_mat	abpoa_align.c	/^void gen_simple_mat(int m, int *mat, int match, int mismatch) {$/;"	f
+get_bit_cnt4	abpoa_graph.c	36;"	d	file:
+get_cur_time	utils.c	/^void get_cur_time(const char *prefix)$/;"	f
+graph_cigar	abpoa.h	/^    int n_cigar; abpoa_cigar_t *graph_cigar;$/;"	m	struct:__anon1
+hash_64	utils.h	/^static inline uint64_t hash_64(uint64_t key)$/;"	f
+ilog2_32	abpoa_graph.c	/^static inline int ilog2_32(uint32_t v)$/;"	f	file:
+ilog2_64	abpoa_graph.c	/^static inline int ilog2_64(uint64_t v)$/;"	f	file:
+in_edge_m	abpoa.h	/^    int in_edge_n, in_edge_m, *in_id;$/;"	m	struct:__anon3
+in_edge_n	abpoa.h	/^    int in_edge_n, in_edge_m, *in_id;$/;"	m	struct:__anon3
+in_id	abpoa.h	/^    int in_edge_n, in_edge_m, *in_id;$/;"	m	struct:__anon3
+index_rank_m	abpoa.h	/^    abpoa_node_t *node; int node_n, node_m, index_rank_m; $/;"	m	struct:__anon4
+index_to_node_id	abpoa.h	/^    int *index_to_node_id;$/;"	m	struct:__anon4
+inf_min	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+inf_min	simd_abpoa_align.cu	/^    int inf_min; \/\/ based on penalty of mismatch and GAP_OE1$/;"	m	struct:__anon8	file:
+is_called_cons	abpoa.h	/^    uint8_t is_topological_sorted:1, is_called_cons:1, is_set_msa_rank:1;$/;"	m	struct:__anon4
+is_diploid	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+is_set_msa_rank	abpoa.h	/^    uint8_t is_topological_sorted:1, is_called_cons:1, is_set_msa_rank:1;$/;"	m	struct:__anon4
+is_topological_sorted	abpoa.h	/^    uint8_t is_topological_sorted:1, is_called_cons:1, is_set_msa_rank:1;$/;"	m	struct:__anon4
+kdq_at	kdq.h	17;"	d
+kdq_destroy	kdq.h	119;"	d
+kdq_first	kdq.h	15;"	d
+kdq_init	kdq.h	118;"	d
+kdq_int_t	abpoa_graph.c	46;"	d	file:
+kdq_last	kdq.h	16;"	d
+kdq_pop	kdq.h	123;"	d
+kdq_push	kdq.h	122;"	d
+kdq_pushp	kdq.h	121;"	d
+kdq_resize	kdq.h	120;"	d
+kdq_shift	kdq.h	126;"	d
+kdq_size	kdq.h	14;"	d
+kdq_t	kdq.h	13;"	d
+kdq_unshift	kdq.h	125;"	d
+kdq_unshiftp	kdq.h	124;"	d
+klib_unused	kdq.h	100;"	d
+klib_unused	kdq.h	98;"	d
+kroundup32	kseq.h	91;"	d
+kroundup32	utils.h	38;"	d
+kroundup64	utils.h	42;"	d
+ks_eof	kseq.h	51;"	d
+ks_rewind	kseq.h	52;"	d
+kseq_rewind	kseq.h	153;"	d
+kstring_t	kseq.h	/^} kstring_t;$/;"	t	typeref:struct:__kstring_t
+l	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+log_num	simd_abpoa_align.cu	/^    const int reg_n, bits_n, log_num, num_of_value, size;$/;"	m	struct:__anon8	file:
+m	abpoa.h	/^    int m; int *mat; \/\/ score matrix$/;"	m	struct:__anon2
+m	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+m	utils.h	/^typedef struct { size_t n, m; pair64_t *a; } pair64_v;$/;"	m	struct:__anon11
+m	utils.h	/^typedef struct { size_t n, m; uint64_t *a; } uint64_v;$/;"	m	struct:__anon10
+main	abpoa.c	/^int main(int argc, char **argv) {$/;"	f
+main	simd_check.c	/^int main(void) {$/;"	f
+mat	abpoa.h	/^    int m; int *mat; \/\/ score matrix$/;"	m	struct:__anon2
+match	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+min_freq	abpoa.h	/^    double min_freq; \/\/ for multiploid data$/;"	m	struct:__anon2
+mismatch	abpoa.h	/^    int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;$/;"	m	struct:__anon2
+n	utils.h	/^typedef struct { size_t n, m; pair64_t *a; } pair64_v;$/;"	m	struct:__anon11
+n	utils.h	/^typedef struct { size_t n, m; uint64_t *a; } uint64_v;$/;"	m	struct:__anon10
+n_aln_bases	abpoa.h	/^    int n_aln_bases, n_matched_bases;$/;"	m	struct:__anon1
+n_cigar	abpoa.h	/^    int n_cigar; abpoa_cigar_t *graph_cigar;$/;"	m	struct:__anon1
+n_matched_bases	abpoa.h	/^    int n_aln_bases, n_matched_bases;$/;"	m	struct:__anon1
+node	abpoa.h	/^    abpoa_node_t *node; int node_n, node_m, index_rank_m; $/;"	m	struct:__anon4
+node_e	abpoa.h	/^    int node_s, node_e, query_s, query_e; \/\/ for local and  extension mode$/;"	m	struct:__anon1
+node_id	abpoa.h	/^    int node_id;$/;"	m	struct:__anon3
+node_id_to_index	abpoa.h	/^    int *node_id_to_index, *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain, *node_id_to_msa_rank;$/;"	m	struct:__anon4
+node_id_to_max_pos_left	abpoa.h	/^    int *node_id_to_index, *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain, *node_id_to_msa_rank;$/;"	m	struct:__anon4
+node_id_to_max_pos_right	abpoa.h	/^    int *node_id_to_index, *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain, *node_id_to_msa_rank;$/;"	m	struct:__anon4
+node_id_to_max_remain	abpoa.h	/^    int *node_id_to_index, *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain, *node_id_to_msa_rank;$/;"	m	struct:__anon4
+node_id_to_msa_rank	abpoa.h	/^    int *node_id_to_index, *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain, *node_id_to_msa_rank;$/;"	m	struct:__anon4
+node_m	abpoa.h	/^    abpoa_node_t *node; int node_n, node_m, index_rank_m; $/;"	m	struct:__anon4
+node_n	abpoa.h	/^    abpoa_node_t *node; int node_n, node_m, index_rank_m; $/;"	m	struct:__anon4
+node_s	abpoa.h	/^    int node_s, node_e, query_s, query_e; \/\/ for local and  extension mode$/;"	m	struct:__anon1
+nst_nt256_table	seq.h	/^const char nst_nt256_table[256] = {$/;"	v
+nst_nt4_table	seq.h	/^unsigned char nst_nt4_table[256] = {$/;"	v
+num_of_value	simd_abpoa_align.cu	/^    const int reg_n, bits_n, log_num, num_of_value, size;$/;"	m	struct:__anon8	file:
+out_cons	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+out_edge_m	abpoa.h	/^    int out_edge_n, out_edge_m, *out_id, *out_weight;$/;"	m	struct:__anon3
+out_edge_n	abpoa.h	/^    int out_edge_n, out_edge_m, *out_id, *out_weight;$/;"	m	struct:__anon3
+out_id	abpoa.h	/^    int out_edge_n, out_edge_m, *out_id, *out_weight;$/;"	m	struct:__anon3
+out_msa	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+out_pog	abpoa.h	/^    char *out_pog;$/;"	m	struct:__anon2
+out_weight	abpoa.h	/^    int out_edge_n, out_edge_m, *out_id, *out_weight;$/;"	m	struct:__anon3
+output_consensus	abpoa_graph.c	/^void output_consensus(abpoa_graph_t *graph, FILE *out_fp) {$/;"	f
+pair64_t	utils.h	/^} pair64_t;$/;"	t	typeref:struct:__anon9
+pair64_v	utils.h	/^typedef struct { size_t n, m; pair64_t *a; } pair64_v;$/;"	t	typeref:struct:__anon11
+peakrss	utils.c	/^long peakrss(void)$/;"	f
+print_format_time	utils.c	/^void print_format_time(FILE *out)$/;"	f
+print_simd	simd_abpoa_align.cu	42;"	d	file:
+print_simd_support	simd_check.c	/^void print_simd_support(void) {$/;"	f
+query_e	abpoa.h	/^    int node_s, node_e, query_s, query_e; \/\/ for local and  extension mode$/;"	m	struct:__anon1
+query_s	abpoa.h	/^    int node_s, node_e, query_s, query_e; \/\/ for local and  extension mode$/;"	m	struct:__anon1
+rang_m	abpoa.h	/^    int *dp_beg, *dp_end, *dp_beg_sn, *dp_end_sn; int rang_m; \/\/ if band : based on (node_m)$/;"	m	struct:__anon5
+read_ids	abpoa.h	/^    uint64_t *read_ids; int read_ids_n; \/\/ for multiploid$/;"	m	struct:__anon3
+read_ids_n	abpoa.h	/^    uint64_t *read_ids; int read_ids_n; \/\/ for multiploid$/;"	m	struct:__anon3
+realtime	utils.c	/^double realtime()$/;"	f
+reg_n	simd_abpoa_align.cu	/^    const int reg_n, bits_n, log_num, num_of_value, size;$/;"	m	struct:__anon8	file:
+ret_cigar	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+rev_cigar	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+s	kseq.h	/^	char *s;$/;"	m	struct:__kstring_t
+s_mem	abpoa.h	/^    SIMDi *s_mem; uint64_t s_msize; \/\/ qp, DP_HE, dp_f OR qp, DP_H, dp_f : based on (qlen, num_of_value, m, node_n)$/;"	m	struct:__anon5
+s_msize	abpoa.h	/^    SIMDi *s_mem; uint64_t s_msize; \/\/ qp, DP_HE, dp_f OR qp, DP_H, dp_f : based on (qlen, num_of_value, m, node_n)$/;"	m	struct:__anon5
+set_65536_table	abpoa_graph.c	/^void set_65536_table(void) {$/;"	f
+set_bit_table16	abpoa_graph.c	/^void set_bit_table16(void) {$/;"	f
+set_clu_read_ids	abpoa_graph.c	/^int set_clu_read_ids(int **clu_read_ids, int *clu_read_ids_n, int seq_n, double min_freq, uint64_t ***read_ids, uint8_t **het_cons_base, int *het_pos, int het_n) {$/;"	f
+simd_abpoa_ag_backtrack	simd_abpoa_align.cu	163;"	d	file:
+simd_abpoa_ag_first_dp	simd_abpoa_align.cu	571;"	d	file:
+simd_abpoa_ag_first_row	simd_abpoa_align.cu	519;"	d	file:
+simd_abpoa_ag_only_var	simd_abpoa_align.cu	428;"	d	file:
+simd_abpoa_ag_var	simd_abpoa_align.cu	492;"	d	file:
+simd_abpoa_cg_backtrack	simd_abpoa_align.cu	249;"	d	file:
+simd_abpoa_cg_first_dp	simd_abpoa_align.cu	590;"	d	file:
+simd_abpoa_cg_first_row	simd_abpoa_align.cu	537;"	d	file:
+simd_abpoa_cg_only_var	simd_abpoa_align.cu	438;"	d	file:
+simd_abpoa_cg_var	simd_abpoa_align.cu	497;"	d	file:
+simd_abpoa_free_var	simd_abpoa_align.cu	482;"	d	file:
+simd_abpoa_init_var	simd_abpoa_align.cu	453;"	d	file:
+simd_abpoa_lg_backtrack	simd_abpoa_align.cu	112;"	d	file:
+simd_abpoa_lg_first_dp	simd_abpoa_align.cu	555;"	d	file:
+simd_abpoa_lg_first_row	simd_abpoa_align.cu	502;"	d	file:
+simd_abpoa_lg_only_var	simd_abpoa_align.cu	419;"	d	file:
+simd_abpoa_lg_var	simd_abpoa_align.cu	487;"	d	file:
+simd_abpoa_print_ag_matrix	simd_abpoa_align.cu	50;"	d	file:
+simd_abpoa_print_cg_matrix	simd_abpoa_align.cu	70;"	d	file:
+simd_abpoa_print_lg_matrix	simd_abpoa_align.cu	82;"	d	file:
+simd_abpoa_var	simd_abpoa_align.cu	382;"	d	file:
+simd_check	simd_check.c	/^int simd_check(void) {$/;"	f
+simd_flag	abpoa.h	/^    int simd_flag; \/\/ available SIMD instruction$/;"	m	struct:__anon2
+size	simd_abpoa_align.cu	/^    const int reg_n, bits_n, log_num, num_of_value, size;$/;"	m	struct:__anon8	file:
+stdout_printf	utils.c	/^int stdout_printf(const char *format, ...) $/;"	f
+threads_per_block	simd_abpoa_align.cu	14;"	d	file:
+uint64_v	utils.h	/^typedef struct { size_t n, m; uint64_t *a; } uint64_v;$/;"	t	typeref:struct:__anon10
+use_read_ids	abpoa.h	/^    uint8_t ret_cigar:1, rev_cigar:1, out_msa:1, out_cons:1, is_diploid:1, use_read_ids:1;$/;"	m	struct:__anon2
+usr_sys_cputime	utils.c	/^void usr_sys_cputime(double *usr_t, double *sys_t)$/;"	f
+wb	abpoa.h	/^    int wb; float wf; \/\/ extra band width$/;"	m	struct:__anon2
+wf	abpoa.h	/^    int wb; float wf; \/\/ extra band width$/;"	m	struct:__anon2
+x	utils.h	/^	uint64_t x, y;$/;"	m	struct:__anon9
+xassert	utils.h	59;"	d
+xgetbv	simd_check.c	/^static inline uint64_t xgetbv(unsigned int index){$/;"	f	file:
+xopen	utils.h	55;"	d
+xreopen	utils.h	56;"	d
+xzopen	utils.h	57;"	d
+y	utils.h	/^	uint64_t x, y;$/;"	m	struct:__anon9
+zdrop	abpoa.h	/^    int zdrop, end_bonus; \/\/ from minimap2$/;"	m	struct:__anon2
