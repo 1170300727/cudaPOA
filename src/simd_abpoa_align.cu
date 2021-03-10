@@ -1681,6 +1681,30 @@ __global__ void cuda_add(int *a, int * b, int _beg, int _end) {
 		a[idx] = a[idx] + b[idx];
 	}
 }
+
+__global__ void cuda_set_E_nb2(int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_dp_e2, int _beg, int _end) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
+	while (idx >= _beg && idx <= _end) {
+		if (pre_dp_e[idx] > dp_e[idx]){
+			dp_e[idx] = pre_dp_e[idx];
+		}
+		if (pre_dp_e2[idx] > dp_e2[idx]){
+			dp_e2[idx] = pre_dp_e2[idx];
+		}
+		idx += blockDim.x;
+	}
+}
+
+__global__ void cuda_set_E_nb(int *dp_e, int * pre_dp_e, int _beg, int _end) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
+	while (idx >= _beg && idx <= _end) {
+		if (pre_dp_e[idx] > dp_e[idx]){
+			dp_e[idx] = pre_dp_e[idx];
+		}
+		idx += blockDim.x;
+	}
+}
+
 __global__ void cuda_set_E(int *dp_e, int * pre_dp_e, int _beg, int _end) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
 	if (idx >= _beg && idx <= _end){
@@ -1878,8 +1902,12 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 		blocks_per_grid = (_cuda_end - _cuda_beg + 1) + threads_per_block - 1 / threads_per_block;
 		cuda_set_M<<<blocks_per_grid, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, _cuda_beg, _cuda_end, flag);
 		_cuda_end = MIN_OF_TWO(cuda_pre_end, cuda_end);
-		cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end);
-		cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, _cuda_beg, _cuda_end);
+		/* cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end); */
+		/* cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, _cuda_beg, _cuda_end); */
+
+		/* cuda_set_E_nb<<<1, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end); */
+		/* cuda_set_E_nb<<<1, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, _cuda_beg, _cuda_end); */
+		cuda_set_E_nb2<<<1, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end);
 	}
 	threads_per_block = 512;
 
@@ -2332,7 +2360,7 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 			int max_i = cuda_abpoa_max(cuda_dp_h, cuda_beg, cuda_end, qlen);
 			free(cuda_dp_h);
 
-			dev_cuda_abpoa_max<<<1, 1>>>(dev_dp_h, cuda_beg, cuda_end, dev_max_i, INF_MIN);
+			/* dev_cuda_abpoa_max<<<1, 1>>>(dev_dp_h, cuda_beg, cuda_end, dev_max_i, INF_MIN); */
 
 			/* fprintf(stderr, "max_i:%d\n", max_i); */
 
