@@ -1,0 +1,6 @@
+set print array on
+set print pretty on
+
+file ./bin/gdb_abpoa 
+set args /home/shaomingyin/abPOA/abPOA-v1.0.3/abPOA/test_data/seq.fa > cons.faS
+b simd_abpoa_align_sequence_to_graph

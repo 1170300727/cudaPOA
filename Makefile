@@ -356,8 +356,8 @@ $(SRC_DIR)/abpoa_plot.o:$(SRC_DIR)/abpoa_plot.c
 
 $(BIN):$(SRC_DIR)/abpoa.o $(OBJS)
 	$(EXEC) $(LINK_NVCC)   $(ALL_LDFLAGS) $(GENCODE_FLAGS)  -o $@ $+ $(LIB) $(LIBRARIES)
-	$(EXEC) mkdir -p ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
-	$(EXEC) cp $@ ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
+	# $(EXEC) mkdir -p ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
+	# $(EXEC) cp $@ ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
 
 run: build
 	$(BIN) /home/shaomingyin/abPOA/abPOA-v1.0.3/abPOA/test_data/seq.fa > cons.fa

@@ -195,10 +195,12 @@ int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){
     int i, j, n_seqs, tot_n, read_id;
     // TODO abpoa_init for each input file ???
     abpoa_t *ab = abpoa_init();
-	cudaEvent_t start, end;
-	checkCudaErrors(cudaEventCreate(&start));
-	checkCudaErrors(cudaEventCreate(&end));
-	checkCudaErrors(cudaEventRecord(start, 0));
+	/* cudaEvent_t start, end; */
+	/* checkCudaErrors(cudaEventCreate(&start)); */
+	/* checkCudaErrors(cudaEventCreate(&end)); */
+	/* checkCudaErrors(cudaEventRecord(start, 0)); */
+	struct timeval start,end;
+	gettimeofday(&start, NULL );
 
 	checkCudaErrors(cudaDeviceSynchronize());
     StopWatchInterface *timer = NULL;
@@ -216,18 +218,22 @@ int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){
         abpoa_core(list_fn);
     }
 
+	gettimeofday(&end, NULL );
+	long timeuse =1000000 * ( end.tv_sec - start.tv_sec ) + end.tv_usec - start.tv_usec;
+	fprintf(stderr, "time = %lfs\n", timeuse / 1000000.0);
+
 	checkCudaErrors(cudaDeviceSynchronize());
     sdkStopTimer(&timer);
 	fprintf(stderr, "time: %lf ms\n", sdkGetTimerValue(&timer));
 	sdkDeleteTimer(&timer);
 
-	checkCudaErrors(cudaEventRecord(end, 0));
-	float elapsedTime;
-	checkCudaErrors(cudaEventSynchronize(end));
-	checkCudaErrors(cudaEventElapsedTime(&elapsedTime, start, end));
-	fprintf(stderr, "time: %lf ms\n", elapsedTime);
-	checkCudaErrors(cudaEventDestroy(start));
-	checkCudaErrors(cudaEventDestroy(end));
+	/* checkCudaErrors(cudaEventRecord(end, 0)); */
+	/* float elapsedTime; */
+	/* checkCudaErrors(cudaEventSynchronize(end)); */
+	/* checkCudaErrors(cudaEventElapsedTime(&elapsedTime, start, end)); */
+	/* fprintf(stderr, "time: %lf ms\n", elapsedTime); */
+	/* checkCudaErrors(cudaEventDestroy(start)); */
+	/* checkCudaErrors(cudaEventDestroy(end)); */
     free(bseq);
     for (i = 0; i < CHUNK_READ_N; ++i) { free((read_seq+i)->name.s); free((read_seq+i)->comment.s); free((read_seq+i)->seq.s); free((read_seq+i)->qual.s); } free(read_seq); 
     abpoa_free(ab, abpt);
