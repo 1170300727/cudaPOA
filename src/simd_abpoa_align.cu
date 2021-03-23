@@ -2,6 +2,7 @@
 /* #include <__clang_cuda_builtin_vars.h> */
 #include <cmath>
 #include <cuda_device_runtime_api.h>
+#include <cuda_runtime.h>
 #include <stdint.h>
 #include <stdio.h>
 #include "helper_cuda.h"
@@ -1202,7 +1203,7 @@ int cuda_simd_abpoa_realloc(abpoa_t *ab, int qlen, abpoa_para_t *abpt) {
         /* ab->abcm->c_mem = (int *)malloc(ab->abcm->c_msize); */
 
 		if (ab->abcm->dev_mem) (cudaFree(ab->abcm->dev_mem));
-		checkCudaErrors(cudaMalloc((void **)&ab->abcm->dev_mem, d_msize));
+		checkCudaErrors(cudaMallocManaged((void **)&ab->abcm->dev_mem, d_msize));
     }
 
     if ((int)node_n > ab->abcm->rang_m) {
@@ -1817,7 +1818,7 @@ __global__ void cuda_set_E_first_node_nb(int *dp_e, int * pre_dp_e,int *dp_e2, i
 		} else if (idx >= _beg && idx <= _end) {
 		dp_e[idx] = pre_dp_e[idx];
 		dp_e2[idx] = pre_dp_e2[idx];
-	}
+		}
 		idx += blockDim.x * gridDim.x;
 	}
 }
@@ -2507,7 +2508,7 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 
     int matrix_size = ((qlen + 1) * matrix_row_n * 5 * sizeof(int)); // DP_H2E2F, convex
 
-	checkCudaErrors(cudaMemcpy(CUDA_DP_H2E2F, DEV_DP_H2E2F, matrix_size, cudaMemcpyDeviceToHost));
+	/* checkCudaErrors(cudaMemcpy(CUDA_DP_H2E2F, DEV_DP_H2E2F, matrix_size, cudaMemcpyDeviceToHost)); */
 	/* cuda_print_matrix(CUDA_DP_H2E2F, qlen, cuda_dp_beg, cuda_dp_end, matrix_row_n); */
 	
 
@@ -2518,14 +2519,16 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 	int cuda_best_score = INF_MIN;
 	int cuda_best_i;
 	int cuda_best_j;
-	cuda_abpoa_global_get_max(graph, CUDA_DP_H2E2F, qlen, cuda_dp_end, &cuda_best_score, &cuda_best_i, &cuda_best_j);
+	// new add
+	cudaDeviceSynchronize();
+	cuda_abpoa_global_get_max(graph, DEV_DP_H2E2F, qlen, cuda_dp_end, &cuda_best_score, &cuda_best_i, &cuda_best_j);
 
 	/* cuda_print_matrix(CUDA_DP_H2E2F, qlen, cuda_dp_beg, cuda_dp_end, matrix_row_n); */
 
 	/* fprintf(stderr, "best_score: (%d, %d) -> %d\n", best_i, best_j, best_score); */
 	fprintf(stderr, "cuda_best_score: (%d, %d) -> %d\n", cuda_best_i, cuda_best_j, cuda_best_score);
 
-	cuda_abpoa_cg_backtrack(CUDA_DP_H2E2F, pre_index, pre_n, cuda_dp_beg, cuda_dp_end, abpt->m, mat, gap_ext1, gap_ext2, gap_oe1, gap_oe2, 0, 0, cuda_best_i, cuda_best_j, qlen, graph, abpt, query, res);
+	cuda_abpoa_cg_backtrack(DEV_DP_H2E2F, pre_index, pre_n, cuda_dp_beg, cuda_dp_end, abpt->m, mat, gap_ext1, gap_ext2, gap_oe1, gap_oe2, 0, 0, cuda_best_i, cuda_best_j, qlen, graph, abpt, query, res);
 	for (i = 0; i < graph->node_n; ++i) free(pre_index[i]); free(pre_index); free(pre_n);
 	/* SIMDFree(PRE_MASK); SIMDFree(SUF_MIN); SIMDFree(PRE_MIN); */
 	/* SIMDFree(GAP_E1S); SIMDFree(GAP_E2S); */
@@ -2718,12 +2721,3 @@ int simd_abpoa_align_sequence_to_graph(abpoa_t *ab, abpoa_para_t *abpt, uint8_t 
    return 0;
 }
 
-__global__ void test_shfl_xor(int A[], int B[])
-{
-    int tid = threadIdx.x;
-    int best = B[tid];
-    //best = subgroup_min<32>(best, 0xffffffffu);
-    best = __shfl_xor(best, 8);
-	__shfl_xor_sync()
-    A[tid] = best;
-}
