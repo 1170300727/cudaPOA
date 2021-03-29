@@ -1206,7 +1206,8 @@ int cuda_simd_abpoa_realloc(abpoa_t *ab, int qlen, abpoa_para_t *abpt) {
         /* ab->abcm->c_mem = (int *)malloc(ab->abcm->c_msize); */
 
 		if (ab->abcm->dev_mem) (cudaFree(ab->abcm->dev_mem));
-		checkCudaErrors(cudaMallocManaged((void **)&ab->abcm->dev_mem, d_msize));
+		/* checkCudaErrors(cudaMallocManaged((void **)&ab->abcm->dev_mem, d_msize)); */
+		checkCudaErrors(cudaMalloc((void **)&ab->abcm->dev_mem, d_msize));
     }
 
     if ((int)node_n > ab->abcm->rang_m) {
@@ -2699,8 +2700,8 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 
 
 	// check matrix
-	/* int matrix_size = ((qlen + 1) * matrix_row_n * 5 * sizeof(int)); // DP_H2E2F, convex */
-	/* checkCudaErrors(cudaMemcpy(CUDA_DP_H2E2F, DEV_DP_H2E2F, matrix_size, cudaMemcpyDeviceToHost)); */
+	int matrix_size = ((qlen + 1) * matrix_row_n * 5 * sizeof(int)); // DP_H2E2F, convex
+	checkCudaErrors(cudaMemcpy(CUDA_DP_H2E2F, DEV_DP_H2E2F, matrix_size, cudaMemcpyDeviceToHost));
 	/* cuda_print_matrix(CUDA_DP_H2E2F, qlen, cuda_dp_beg, cuda_dp_end, matrix_row_n); */
 	
 
@@ -2712,15 +2713,15 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 	int cuda_best_i;
 	int cuda_best_j;
 	// new add
-	cudaDeviceSynchronize();
-	cuda_abpoa_global_get_max(graph, DEV_DP_H2E2F, qlen, cuda_dp_end, &cuda_best_score, &cuda_best_i, &cuda_best_j);
+	/* cudaDeviceSynchronize(); */
+	cuda_abpoa_global_get_max(graph, CUDA_DP_H2E2F, qlen, cuda_dp_end, &cuda_best_score, &cuda_best_i, &cuda_best_j);
 
 	/* cuda_print_matrix(CUDA_DP_H2E2F, qlen, cuda_dp_beg, cuda_dp_end, matrix_row_n); */
 
 	/* fprintf(stderr, "best_score: (%d, %d) -> %d\n", best_i, best_j, best_score); */
 	fprintf(stderr, "cuda_best_score: (%d, %d) -> %d\n", cuda_best_i, cuda_best_j, cuda_best_score);
 
-	cuda_abpoa_cg_backtrack(DEV_DP_H2E2F, pre_index, pre_n, cuda_dp_beg, cuda_dp_end, abpt->m, mat, gap_ext1, gap_ext2, gap_oe1, gap_oe2, 0, 0, cuda_best_i, cuda_best_j, qlen, graph, abpt, query, res);
+	cuda_abpoa_cg_backtrack(CUDA_DP_H2E2F, pre_index, pre_n, cuda_dp_beg, cuda_dp_end, abpt->m, mat, gap_ext1, gap_ext2, gap_oe1, gap_oe2, 0, 0, cuda_best_i, cuda_best_j, qlen, graph, abpt, query, res);
 	for (i = 0; i < graph->node_n; ++i) free(pre_index[i]); free(pre_index); free(pre_n);
 	/* SIMDFree(PRE_MASK); SIMDFree(SUF_MIN); SIMDFree(PRE_MIN); */
 	/* SIMDFree(GAP_E1S); SIMDFree(GAP_E2S); */
