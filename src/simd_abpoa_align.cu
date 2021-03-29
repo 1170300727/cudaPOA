@@ -1,8 +1,10 @@
 /* #include <__clang_cuda_builtin_vars.h> */
 /* #include <__clang_cuda_builtin_vars.h> */
+#include <climits>
 #include <cmath>
 #include <cuda_device_runtime_api.h>
 #include <cuda_runtime.h>
+#include <driver_types.h>
 #include <stdint.h>
 #include <stdio.h>
 #include "helper_cuda.h"
@@ -23,6 +25,7 @@ typedef struct {
 
 /* no need SIMD_para_t */\
 int INF_MIN;
+__device__ const int d_float_min = INT_MIN;
 #define SIMDShiftOneNi8  1
 #define SIMDShiftOneNi16 2
 #define SIMDShiftOneNi32 4
@@ -1860,6 +1863,148 @@ __global__ void cuda_set_M_first_node(int *dp_h, int * pre_dp_h, int beg, int en
 	}
 }
 
+// input the [beg, end] part of data,when finished, add beg to max_index 
+template <unsigned int block_size>
+__global__ void reduce_max_index(int *data, int *out_data, int *out_index, int n) {
+	__shared__ int share_data[256];
+	__shared__ int share_index[256];
+
+	unsigned int tid = threadIdx.x;
+	unsigned int i = blockIdx.x * (block_size * 2) + tid;
+	unsigned int grid_size = block_size * gridDim.x;
+	if (i + block_size < n && data[i] < data[i + block_size]) {
+		share_data[tid] = data[i + block_size];
+		share_index[tid] = i + block_size;
+	} else {
+		share_data[tid] = data[i];
+		share_index[tid] = i;
+	}
+	i = grid_size * 2 + blockIdx.x * block_size + tid;
+	while (i < n) {
+		if (share_data[tid] < data[i]) {
+			share_data[tid] = data[i];
+			share_index[tid] = i;
+		}
+		i += grid_size;
+	}
+	__syncthreads();
+
+	if (block_size >= 512) {
+		if (tid < 256) {
+			if (share_data[tid] < share_data[tid + 256]) {
+				share_data[tid] = share_data[tid + 256];
+				share_index[tid] = share_index[tid + 256];
+			}
+		}
+	__syncthreads();
+	}
+	if (block_size >= 256) {
+		if (tid < 128) {
+			if (share_data[tid] < share_data[tid + 128]) {
+				share_data[tid] = share_data[tid + 128];
+				share_index[tid] = share_index[tid + 128];
+			}
+		}
+	__syncthreads();
+	}
+	if (block_size >= 128) {
+		if (tid < 64) {
+			if (share_data[tid] < share_data[tid + 64]) {
+				share_data[tid] = share_data[tid + 64];
+				share_index[tid] = share_index[tid + 64];
+			}
+		}
+	__syncthreads();
+	}
+	if (tid < 32) {
+		if (block_size >= 64) {
+			if (share_data[tid] < share_data[tid + 32]) {
+				share_data[tid] = share_data[tid + 32];
+				share_index[tid] = share_index[tid + 32];
+			}
+		}
+		if (tid < 16) {
+			if (block_size >= 32) {
+				if (share_data[tid] < share_data[tid + 16]) {
+					share_data[tid] = share_data[tid + 16];
+					share_index[tid] = share_index[tid + 16];
+				}
+			}
+		}
+		if (tid < 8) {
+			if (block_size >= 16) {
+				if (share_data[tid] < share_data[tid + 8]) {
+					share_data[tid] = share_data[tid + 8];
+					share_index[tid] = share_index[tid + 8];
+				}
+			}
+		}
+		if (tid < 4) {
+			if (block_size >= 8) {
+				if (share_data[tid] < share_data[tid + 4]) {
+					share_data[tid] = share_data[tid + 4];
+					share_index[tid] = share_index[tid + 4];
+				}
+			}
+		}
+		if (tid < 2) {
+			if (block_size >= 4) {
+				if (share_data[tid] < share_data[tid + 2]) {
+					share_data[tid] = share_data[tid + 2];
+					share_index[tid] = share_index[tid + 2];
+				}
+			}
+		}
+		if (tid < 1) {
+			if (block_size >= 2) {
+				if (share_data[tid] < share_data[tid + 1]) {
+					share_data[tid] = share_data[tid + 1];
+					share_index[tid] = share_index[tid + 1];
+				}
+			}
+		}
+		if (tid == 0) {
+			out_data[blockIdx.x] = share_data[0];
+			out_index[blockIdx.x] = share_index[0];
+		}
+	}
+}
+// get max index, only if the blockdim.x == 32, but too slow
+__global__ void maxReduce(int* d_data, int n, int beg, int end, int *max_index)
+{
+    // compute max over all threads, store max in d_data[0]
+    int ti = threadIdx.x + beg;
+
+    __shared__ volatile int max_value;
+    __shared__ volatile int index;
+
+    if (ti == beg) max_value = d_float_min;
+	n += beg;
+
+    for (int bi = 0; bi < n; bi += blockDim.x)
+    {
+        int i = bi + ti;
+        if (i >= n) break;
+        
+        int v = d_data[i];
+		/* __syncthreads(); */
+
+        while (max_value < v)
+        {
+            max_value = v;
+        }
+		if (v == max_value) *max_index = i;
+
+		/* __syncthreads(); */
+    }
+
+    /* if (ti == beg){ */
+	/*     [> d_data[1] = index; <] */
+	/*     [> d_data[0] = max_value; <] */
+	/*     *max_index = index; */
+	/* } */
+}
+
 void cuda_print_row_h(FILE *file, int index, int *dp_h, int beg, int end, int qlen) {
 	int i;
     fprintf(file, "index:%d\n", index);	                                                                        
@@ -2468,31 +2613,77 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 		dev_q = dev_qp +  graph->node[node_id].base * (qlen + 1);
 		cuda_abpoa_cg_dp(DEV_DP_H2E2F, pre_index, pre_n, index_i, graph, abpt, qlen, w, CUDA_DP_H2E2F, cuda_dp_beg, cuda_dp_end, gap_ext1, gap_ext2, gap_oe1, gap_oe2, file, dev_dp_h, dev_dp_e1, dev_dp_e2,dev_dp_f1, dev_dp_f2, dev_q, dev_pre_dp_h, dev_pre_dp_e1, dev_pre_dp_e2);
 		/* tot_dp_sn += abpoa_cg_dp(q, dp_h, dp_e1, dp_e2, dp_f1, dp_f2, pre_index, pre_n, index_i, graph, abpt, dp_sn, pn, qlen, w, DP_H2E2F, SIMD_INF_MIN, GAP_O1, GAP_O2, GAP_E1, GAP_E2, GAP_OE1, GAP_OE2, GAP_E1S, GAP_E2S, PRE_MIN, PRE_MASK, SUF_MIN, log_n, dp_beg, dp_end, dp_beg_sn, dp_end_sn); */
+		int *reduce_index;
+		cudaMalloc((void **)&reduce_index, sizeof(int));
+		int *out_data;
+		cudaMalloc((void **)&out_data, sizeof(int));
+		int *out_index;
+		cudaMalloc((void **)&out_index, sizeof(int));
 		if (abpt->wb >= 0) {
 			cuda_beg = cuda_dp_beg[index_i];	
 			cuda_end = cuda_dp_end[index_i];	
 
-			/* checkCudaErrors(cudaMemcpy(cuda_dp_h, dev_dp_h, (qlen + 1) * sizeof(int), cudaMemcpyDeviceToHost)); */
-			int *cuda_dp_h = (int *)malloc((qlen + 1) * sizeof(int));
-			/* if (index_i == 2603) { */
-			/*     fprintf(stderr, "dev_dp_h:%x\n", dev_dp_h); */
-			/*     fprintf(stderr, "cuda_dp_h:%x\n", cuda_dp_h); */
-			/* } */
-			cudaMemcpy(cuda_dp_h, dev_dp_h, (qlen + 1) * sizeof(int), cudaMemcpyDeviceToHost);
-			int max_i = cuda_abpoa_max(cuda_dp_h, cuda_beg, cuda_end, qlen);
-			free(cuda_dp_h);
+			// cpu compute max_index
+			/* int *cuda_dp_h = (int *)malloc((qlen + 1) * sizeof(int)); */
+			/* cudaMemcpy(cuda_dp_h, dev_dp_h, (qlen + 1) * sizeof(int), cudaMemcpyDeviceToHost); */
+			/* int cpu_max_i = cuda_abpoa_max(cuda_dp_h, cuda_beg, cuda_end, qlen); */
+			/* free(cuda_dp_h); */
 
+			// unified memory
+			/* cudaDeviceSynchronize(); */
+			/* int max_i = cuda_abpoa_max(dev_dp_h, cuda_beg, cuda_end, qlen); */
+
+			// gpu compute max_index
+			/* dev_cuda_abpoa_max<<<1, 1>>>(dev_dp_h, cuda_beg, cuda_end, dev_max_i, inf_min); */
 			/* dev_cuda_abpoa_max<<<1, 1>>>(dev_dp_h, cuda_beg, cuda_end, dev_max_i, INF_MIN); */
-
-			/* fprintf(stderr, "max_i:%d\n", max_i); */
-
-			/* if (index_i >= 2600 && index_i <=2610) { */
-			/*         fprintf(stderr, "cuda_end: %d\n", cuda_end); */
-			/* } */
 			/* checkCudaErrors(cudaMemcpy(&max_i, dev_max_i, sizeof(int), cudaMemcpyDeviceToHost)); */
+			/* abpoa_ada_max_i(max_i, graph, node_id, file_max_position); */
+
+			// gpu reduce compute max_index
+			/* int reduce_cpu_index; */
+			/* maxReduce<<<1, 32>>>(dev_dp_h, cuda_end - cuda_beg + 1, cuda_beg, cuda_end, reduce_index); */
+			/* checkCudaErrors(cudaMemcpy(&reduce_cpu_index, reduce_index, sizeof(int), cudaMemcpyDeviceToHost)); */
+			/* abpoa_ada_max_i(reduce_cpu_index, graph, node_id, file_max_position); */
+
+			// gpu reduce compute max_index 2
+			int reduce_cpu_index2;
+			int temp_block_size = pow(2, (int)log2(cuda_end - cuda_beg + 1 - 1));
+			int block_size = temp_block_size > 256 ? 256 : temp_block_size;
+			switch(block_size) {
+				case 512:
+					reduce_max_index<512><<<1, 512>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 256:
+					reduce_max_index<256><<<1, 256>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 128:
+					reduce_max_index<128><<<1, 128>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 64:
+					reduce_max_index<64><<<1, 64>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 32:
+					reduce_max_index<32><<<1, 32>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 16:
+					reduce_max_index<16><<<1, 16>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 8:
+					reduce_max_index<8><<<1, 8>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 4:
+					reduce_max_index<4><<<1, 4>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 2:
+					reduce_max_index<2><<<1, 2>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+				case 1:
+					reduce_max_index<1><<<1, 1>>>(dev_dp_h + cuda_beg, out_data, out_index, cuda_end - cuda_beg + 1);break;
+			}
+			checkCudaErrors(cudaMemcpy(&reduce_cpu_index2, out_index, sizeof(int), cudaMemcpyDeviceToHost));
+			abpoa_ada_max_i(reduce_cpu_index2 + cuda_beg, graph, node_id, file_max_position);
+
+			/* if (cuda_dp_h[reduce_cpu_index2 + cuda_beg] != cuda_dp_h[reduce_cpu_index]) { */
+			/*     cuda_print_row_h(stderr, index_i, dev_dp_h, cuda_dp_beg[index_i], cuda_dp_end[index_i], 11); */
+			/*     fprintf(stderr,"index_i:%d\n", index_i ); */
+			/*     printf("index_i:%d\n", index_i); */
+			/*     fprintf(stderr,"right:%d, reduce:%d\n", reduce_cpu_index2, reduce_cpu_index ); */
+			/*     printf("right:%d, reduce:%d", reduce_cpu_index2, reduce_cpu_index); */
+			/*     exit(0); */
+			/* } */
+			/* free(cuda_dp_h); */
 			
-			/* fprintf(file_max_position, "index:%d\n", index_i); */
-			abpoa_ada_max_i(max_i, graph, node_id, file_max_position);
 		}
 	}
 	fclose(file_graph);
@@ -2506,8 +2697,9 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 	/* checkCudaErrors(cudaFree(dev_pre_dp_e1)); */
 	/* checkCudaErrors(cudaFree(dev_pre_dp_e2)); */
 
-    int matrix_size = ((qlen + 1) * matrix_row_n * 5 * sizeof(int)); // DP_H2E2F, convex
 
+	// check matrix
+	/* int matrix_size = ((qlen + 1) * matrix_row_n * 5 * sizeof(int)); // DP_H2E2F, convex */
 	/* checkCudaErrors(cudaMemcpy(CUDA_DP_H2E2F, DEV_DP_H2E2F, matrix_size, cudaMemcpyDeviceToHost)); */
 	/* cuda_print_matrix(CUDA_DP_H2E2F, qlen, cuda_dp_beg, cuda_dp_end, matrix_row_n); */
 	

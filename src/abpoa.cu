@@ -199,8 +199,6 @@ int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){
 	/* checkCudaErrors(cudaEventCreate(&start)); */
 	/* checkCudaErrors(cudaEventCreate(&end)); */
 	/* checkCudaErrors(cudaEventRecord(start, 0)); */
-	struct timeval start,end;
-	gettimeofday(&start, NULL );
 
 	checkCudaErrors(cudaDeviceSynchronize());
     StopWatchInterface *timer = NULL;
@@ -218,9 +216,6 @@ int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){
         abpoa_core(list_fn);
     }
 
-	gettimeofday(&end, NULL );
-	long timeuse =1000000 * ( end.tv_sec - start.tv_sec ) + end.tv_usec - start.tv_usec;
-	fprintf(stderr, "time = %lfs\n", timeuse / 1000000.0);
 
 	checkCudaErrors(cudaDeviceSynchronize());
     sdkStopTimer(&timer);
