@@ -361,6 +361,9 @@ $(BIN):$(SRC_DIR)/abpoa.o $(OBJS)
 
 run: build
 	$(BIN) /home/shaomingyin/abPOA/abPOA-v1.0.3/abPOA/test_data/seq.fa > cons.fa
+
+test: build
+	$(BIN) /home/shaomingyin/abPOA/abPOA-v1.0.3/abPOA/test_data/seq2.fa > cons.fa
 	
 clean:
 	rm -f $(SRC_DIR)/*.[oa] $(LIB_DIR)/*.[oa] $(BIN) ./bin/gdb_abpoa ./bin/gdb_abpoa

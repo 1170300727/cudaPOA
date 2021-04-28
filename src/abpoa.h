@@ -96,9 +96,14 @@ typedef struct {
 
 typedef struct {
     int *c_mem; uint64_t c_msize; // qp, DP_HE, dp_f OR qp, DP_H, dp_f : based on (qlen, num_of_value, m, node_n)
+	uint8_t *cuda_backtrack_matrix; // include 2 E_source_order matrix, so the size of this memory is 2 twice of a backtrack matrix
 	int *dev_mem; // cuda device memory
+	uint8_t *dev_backtrack_matrix; // the matrix for backtrack
     int *cuda_dp_beg, *cuda_dp_end ; 
+	int *cuda_accumulate_beg; // for backtrack matrix index, easy to check error, the 0 element is null, because the first line only has a 0 data, doesn't have backtrack message.
+	// cuda_accu_beg[i] means the band of ith(0-base) line of backtrack matrix begin from index cuda_accu_beg[i](0-base).
 	int rang_m; // if band : based on (node_m)
+	int *backtrack_size; // the size of backtrack matrix, gradually accumulate.
 } abpoa_cuda_matrix_t;
 
 typedef struct {

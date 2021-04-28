@@ -1,0 +1,13 @@
+
+						n = j - 1;
+						sum = 1;
+						/* add_e = gap_oe1; */
+						/* while (n > start_j) { */
+						/*     sum++; */
+						/*     if (dp_h[n - 1] - add_e == dp_h[j]) { */
+						/*         cur_op = ABPOA_M_OP, hit =1; */
+						/*         break; */
+						/*     } */
+						/*     add_e += gap_ext1; */
+						/*     n--; */
+						/* } */

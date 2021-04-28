@@ -237,7 +237,6 @@ int abpoa_main(const char *list_fn, int in_list, abpoa_para_t *abpt){
 
 int main(int argc, char **argv) {
     int c, m, in_list=0; char *s; abpoa_para_t *abpt = abpoa_init_para();
-	printf("192 hello!\n");
     while ((c = getopt_long(argc, argv, "m:M:X:O:E:b:f:z:e:lo:r:g:a:dq:hv", abpoa_long_opt, NULL)) >= 0) {
         switch(c)
         {
