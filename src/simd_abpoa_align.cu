@@ -1710,12 +1710,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 0) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1739,12 +1739,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 1) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1768,12 +1768,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 2) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1797,12 +1797,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 3) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1826,12 +1826,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 4) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1855,12 +1855,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 5) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1884,12 +1884,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 6) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1913,12 +1913,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 7) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1942,12 +1942,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 8) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -1971,12 +1971,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 9) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -2000,12 +2000,12 @@ __global__ void cuda_set_F_nb(int *dp_f, int e,int *dp_f2, uint8_t *e1e2f1f2_ext
 		if (logn >= 10) {
 			if (raw_idx >= j) {
 				/* dp_f[idx] = dp_f[idx - i] - e > dp_f[idx] ? dp_f[idx - i] - e : dp_f[idx]; */
-				if (dp_f[idx - i] - e > dp_f[idx]) {
+				if (dp_f[idx - i] - e >= dp_f[idx]) {
 					dp_f[idx] = dp_f[idx - i] - e;
 					e1e2f1f2_extension[raw_idx] |= (1 << 1);
 				}
 				/* dp_f2[idx] = dp_f2[idx - i] - e2 > dp_f2[idx] ? dp_f2[idx - i] - e2 : dp_f2[idx]; */
-				if (dp_f2[idx - i] - e2 > dp_f2[idx]) {
+				if (dp_f2[idx - i] - e2 >= dp_f2[idx]) {
 					dp_f2[idx] = dp_f2[idx - i] - e2;
 					e1e2f1f2_extension[raw_idx] |= 1;
 				}
@@ -2076,11 +2076,11 @@ __global__ void cuda_get_max_F_and_set_E(int *dp_h, int *dp_e1,int *dp_e2, int *
 	while (idx <= _end) {
 		/* e1e2f1f2_extension[raw_idx] = 0; */
 		if (idx >= _beg && idx <= _end) {
-			if (dp_e1[idx] >= dp_h[idx]) {
+			if (dp_e1[idx] > dp_h[idx]) {
 				dp_h[idx] = dp_e1[idx];
 				flag = 2;
 			} 
-			if(dp_e2[idx] >= dp_h[idx]) {
+			if(dp_e2[idx] > dp_h[idx]) {
 				dp_h[idx] = dp_e2[idx];
 				flag = 3;
 			} 
@@ -2754,10 +2754,10 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 	/* } */
 	cuda_accumulate_beg[index_i] = *backtrack_size + 1;
 	*backtrack_size += cuda_end - cuda_beg + 1;
-	/* if (index_i == 5926) { */
+	/* if (index_i == 1007) { */
 	/*     int *result1 = (int *)malloc(sizeof(int) * (qlen + 1) * 5); */
 	/*     checkCudaErrors(cudaMemcpy(result1, dev_dp_h, (qlen + 1) * 5 * sizeof(int), cudaMemcpyDeviceToHost)); */
-	/*     cuda_print_row(file, index_i, result1, cuda_beg, cuda_end, qlen); */
+	/*     cuda_print_row(stderr, index_i, result1, cuda_beg, cuda_end, qlen); */
 	/*     free(result1); */
 	/* } */
 	/* checkCudaErrors(cudaEventRecord(end, 0)); */
@@ -2937,6 +2937,7 @@ void cuda_my_abpoa_cg_backtrack(uint8_t *backtrack_matrix, uint8_t *e_source_ord
 			/* f2 = (e1e2f1f2_extension[backtrack_beg + gap] >> 1) & 1; */
 			hit = 1;
 		}
+		// e1
         if (hit == 0 && backtrack_matrix[backtrack_beg + gap] == 3) {
 			e1 = (e1e2f1f2_extension[backtrack_beg + gap] >> 3) & 1;
 			while (e1 != 1) {
@@ -2949,6 +2950,7 @@ void cuda_my_abpoa_cg_backtrack(uint8_t *backtrack_matrix, uint8_t *e_source_ord
 				e1 = (e1e2f1f2_extension[backtrack_beg + gap] >> 3) & 1;
 			}
 		}
+		// e2
         if (hit == 0 && backtrack_matrix[backtrack_beg + gap] == 4) {
 			e2= (e1e2f1f2_extension[backtrack_beg + gap] >> 2) & 1;
 			while (e2!= 1) {
@@ -3449,9 +3451,9 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 	FILE *m_source_order_file = fopen(m_source_order_name, "w");
 	FILE *e1e2f1f2_extension_file = fopen(e1e2f1f2_extension_name, "w");
 	/* print_backtrack_matrix(backtrack_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, backtrack_file); */
-	/* print_backtrack_matrix(e_source_order_matrix1, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file1); */
-	/* print_backtrack_matrix(e_source_order_matrix2, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file2); */
-	/* print_backtrack_matrix(m_source_order_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, m_source_order_file); */
+	print_backtrack_matrix(e_source_order_matrix1, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file1);
+	print_backtrack_matrix(e_source_order_matrix2, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file2);
+	print_backtrack_matrix(m_source_order_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, m_source_order_file);
 	/* print_backtrack_matrix(e1e2f1f2_extension_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e1e2f1f2_extension_file); */
 	fclose(backtrack_file);
 	fclose(e_source_order_file1);
