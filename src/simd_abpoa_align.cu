@@ -2145,31 +2145,52 @@ __global__ void cuda_get_max_F_and_set_E(int *dp_h, int *dp_e1,int *dp_e2, int *
 /* } */
 
 // f = (h - oe)>>1
-__global__ void cuda_suboe1_shift_right_one_nb(int *f, int *f2, int *dp_h, int oe,int oe2, int _beg, int _end, int INF_MIN, int max_pre_end) {
+// a is the same as dp_h
+__global__ void cuda_add_and_suboe1_shift_right_one_nb(int *f, int *f2, int *dp_h, int oe,int oe2, int * q, int _beg, int _end, int INF_MIN, int max_pre_end) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
-	while (idx >= _beg && idx <= _end) {
-		if (idx == _beg) {
-			f[idx] = INF_MIN;
-			f2[idx] = INF_MIN;
-		} else {
-			if (idx > max_pre_end + 2) {
-				f[idx] = INF_MIN;
-				f2[idx] = INF_MIN;
-			} else {
-				f[idx] = dp_h[idx - 1] - oe;
-				f2[idx] = dp_h[idx - 1] - oe2;
-			}
-		}
-		/* if (idx > _beg && idx <= _end){ */
-		/*     if (idx > max_pre_end + 2) { */
-		/*         f[idx] = INF_MIN; */
-		/*     } else { */
-		/*         f[idx] = dp_h[idx - 1] - oe; */
-		/*     } */
-		/* } else if (idx == _beg) { */
-		/*     f[idx] = INF_MIN; */
-		/* } */
+	while (idx <= _end) {
+		dp_h[idx] = dp_h[idx] + q[idx];
 		idx += blockDim.x * gridDim.x;
+	}
+	idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
+	while (idx <= max_pre_end + 2) {
+		/* dp_h[idx] += q[idx]; */
+		f[idx] = dp_h[idx - 1] - oe;
+		f2[idx] = dp_h[idx - 1] - oe2;
+		idx += blockDim.x * gridDim.x;
+	}
+	while (idx <= _end) {
+		/* dp_h[idx] += q[idx]; */
+		f[idx] = INF_MIN;
+		f2[idx] = INF_MIN;
+		idx += blockDim.x * gridDim.x;
+	}
+	if (blockIdx.x == 0 && threadIdx.x == 0) {
+		f[_beg] = INF_MIN;
+		f2[_beg] = INF_MIN;
+	}
+	/* while (idx <= _end) { */
+	/*     if (idx >= _beg && idx <= _end){ */
+	/*         a[idx] = a[idx] + b[idx]; */
+	/*     } */
+	/*     idx += blockDim.x * gridDim.x; */
+	/* } */
+}
+__global__ void cuda_suboe1_shift_right_one_nb(int *f, int *f2, int *dp_h, int oe,int oe2, int _beg, int _end, int INF_MIN, int max_pre_end) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg + 1;
+	while (idx <= max_pre_end + 2) {
+		f[idx] = dp_h[idx - 1] - oe;
+		f2[idx] = dp_h[idx - 1] - oe2;
+		idx += blockDim.x * gridDim.x;
+	}
+	while (idx <= _end) {
+		f[idx] = INF_MIN;
+		f2[idx] = INF_MIN;
+		idx += blockDim.x * gridDim.x;
+	}
+	if (blockIdx.x == 0 && threadIdx.x == 0) {
+		f[_beg] = INF_MIN;
+		f2[_beg] = INF_MIN;
 	}
 }
 
@@ -2214,15 +2235,51 @@ __global__ void cuda_suboe1_shift_right_one(int *f, int *dp_h, int oe, int _beg,
 __global__ void cuda_add(int *a, int * b, int _beg, int _end) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
 	while (idx <= _end) {
-		if (idx >= _beg && idx <= _end){
-			a[idx] = a[idx] + b[idx];
-		}
+		a[idx] = a[idx] + b[idx];
 		idx += blockDim.x * gridDim.x;
 	}
 }
 
-__global__ void cuda_set_E_nb2(int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_dp_e2, uint8_t *e_source_order, uint8_t *e_source_order2, int _beg, int _end, int order) {
-	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x;
+// gap is the distance of _cuda_beg and cuda_beg, which is set for m_source_order index.
+__global__ void cuda_set_ME(int *dp_h, int * pre_dp_h, uint8_t *m_source_order,int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_dp_e2, uint8_t *e_source_order, uint8_t *e_source_order2, int _beg, int _end, int flag, int order, int gap) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
+	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x + gap;
+	if (idx == _beg && flag == 1 && pre_dp_h[_beg - 1] > dp_h[_beg]) {
+		dp_h[_beg] = pre_dp_h[_beg - 1];
+		m_source_order[gap] = order;
+	}
+	/* if (pre_dp_e[_beg] > dp_e[_beg]){ */
+	/*     dp_e[_beg] = pre_dp_e[_beg]; */
+	/*     e_source_order[gap] = order; */
+	/* } */
+	/* if (pre_dp_e2[_beg] > dp_e2[_beg]){ */
+	/*     dp_e2[_beg] = pre_dp_e2[_beg]; */
+	/*     e_source_order2[gap] = order; */
+	/* } */
+	while (idx <= _end) {
+		if (pre_dp_e[idx] > dp_e[idx]){
+			dp_e[idx] = pre_dp_e[idx];
+			e_source_order[raw_idx] = order;
+		}
+		if (pre_dp_e2[idx] > dp_e2[idx]){
+			dp_e2[idx] = pre_dp_e2[idx];
+			e_source_order2[raw_idx] = order;
+		}
+		if (pre_dp_h[idx] > dp_h[idx + 1]){
+			dp_h[idx + 1] = pre_dp_h[idx];
+			m_source_order[raw_idx + 1] = order;
+		}
+		idx += blockDim.x * gridDim.x;
+		raw_idx += blockDim.x * gridDim.x;
+	}
+	/* if (pre_dp_h[_end] > dp_h[_end + 1]){ */
+	/*     dp_h[_end + 1] = pre_dp_h[_end]; */
+	/*     m_source_order[_end - _beg + 1] = order; */
+	/* } */
+}
+
+__global__ void cuda_set_E_nb2(int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_dp_e2, uint8_t *e_source_order, uint8_t *e_source_order2, int _beg, int _end, int order, int gap) {
+	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x + gap;
 	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
 	while (idx >= _beg && idx <= _end) {
 		if (pre_dp_e[idx] > dp_e[idx]){
@@ -2234,6 +2291,7 @@ __global__ void cuda_set_E_nb2(int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_d
 			e_source_order2[raw_idx] = order;
 		}
 		idx += blockDim.x * gridDim.x;
+		raw_idx += blockDim.x * gridDim.x;
 	}
 }
 
@@ -2256,9 +2314,10 @@ __global__ void cuda_set_E(int *dp_e, int * pre_dp_e, int _beg, int _end) {
 	}
 }
 
-__global__ void cuda_set_M(int *dp_h, int * pre_dp_h, uint8_t *m_source_order, int _beg, int _end, int flag, int order) {
+// gap is the distance of _cuda_beg and cuda_beg, which is set for m_source_order index.
+__global__ void cuda_set_M(int *dp_h, int * pre_dp_h, uint8_t *m_source_order, int _beg, int _end, int flag, int order, int gap) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x + _beg;
-	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x;
+	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x + gap;
 	while (idx <= _end) {
 		if (idx > _beg){
 			if (pre_dp_h[idx - 1] > dp_h[idx]){
@@ -2276,6 +2335,42 @@ __global__ void cuda_set_M(int *dp_h, int * pre_dp_h, uint8_t *m_source_order, i
 		}
 		idx += blockDim.x * gridDim.x;
 		raw_idx += blockDim.x * gridDim.x;
+	}
+}
+
+__global__ void cuda_set_ME_first_node_nb(int *dp_h, int * pre_dp_h, uint8_t *m_source_order,int *dp_e, int * pre_dp_e,int *dp_e2, int * pre_dp_e2, uint8_t *e_source_order, uint8_t *e_source_order2, int beg, int end, int _beg, int _end, int INF_MIN, int flag) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x + beg;
+	int raw_idx = blockIdx.x * blockDim.x + threadIdx.x;
+	// 掐头去尾，m比e右移一个单元
+	if (raw_idx == 0) {
+		dp_h[beg] = INF_MIN;
+		m_source_order[0] = UINT8_MAX;
+	}
+	while (idx < end) {
+		if ((idx >= beg && idx < _beg) || (idx >_end && idx < end)){
+			dp_h[idx + 1] = INF_MIN;
+			m_source_order[raw_idx + 1] = UINT8_MAX;
+			dp_e[idx] = INF_MIN;
+			dp_e2[idx] = INF_MIN;
+			e_source_order[raw_idx] = UINT8_MAX;
+			e_source_order2[raw_idx] = UINT8_MAX;
+		} else if (idx >= _beg && idx <= _end) {
+			dp_h[idx + 1] = pre_dp_h[idx];
+			m_source_order[raw_idx + 1] = 0;
+			dp_e[idx] = pre_dp_e[idx];
+			dp_e2[idx] = pre_dp_e2[idx];
+			e_source_order[raw_idx] = 0;
+			e_source_order2[raw_idx] = 0;
+		}
+		idx += blockDim.x * gridDim.x;
+		raw_idx += blockDim.x * gridDim.x;
+	}
+	// 掐头去尾，m比e右移一个单元
+	if (blockIdx.x == 0 && threadIdx.x == 0) {
+		dp_e[end] = INF_MIN;
+		dp_e2[end] = INF_MIN;
+		e_source_order[end - beg] = UINT8_MAX;
+		e_source_order2[end - beg] = UINT8_MAX;
 	}
 }
 
@@ -2536,6 +2631,8 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 	int _cuda_end;
 	// the begin of the band of the current node 
 	int _cuda_beg;
+	// gap is the distance of _cuda_beg and cuda_beg
+	int gap;
     if (abpt->wb < 0) {
 		// no band
         cuda_beg = cuda_dp_beg[index_i] = 0, cuda_end = cuda_dp_end[index_i] = qlen;
@@ -2599,7 +2696,11 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 	threads_per_block = 512;
 	blocks_per_grid = (cuda_end - cuda_beg + 1) + threads_per_block - 1 / threads_per_block;
 	/* cuda_set_M_first_node<<<blocks_per_grid, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN, flag); */
-	cuda_set_M_first_node_nb<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order, cuda_beg, cuda_end, _cuda_beg_m, _cuda_end, INF_MIN, flag);
+	/* cuda_set_M_first_node_nb<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order, cuda_beg, cuda_end, _cuda_beg_m, _cuda_end, INF_MIN, flag); */
+
+	// assemble E and M first node
+	_cuda_end = MIN_OF_TWO(cuda_pre_end, cuda_end);
+	cuda_set_ME_first_node_nb<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order,dev_dp_e1, dev_pre_dp_e1,dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN, flag);
 
 	_cuda_end = MIN_OF_TWO(cuda_pre_end, cuda_end);
 	// ***************************************
@@ -2613,7 +2714,7 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 
 	/* cuda_set_E_first_node<<<blocks_per_grid, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN); */
 	/* cuda_set_E_first_node<<<blocks_per_grid, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN); */
-	cuda_set_E_first_node_nb<<<3, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1,dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN);
+	/* cuda_set_E_first_node_nb<<<3, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1,dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2, cuda_beg, cuda_end, _cuda_beg, _cuda_end, INF_MIN); */
 	/* if (index_i == 2223) { */
 	/*     fprintf(stderr, "prei:%d\n", pre_i); */
 	/* } */
@@ -2632,8 +2733,8 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 		dev_pre_dp_e1 = dev_pre_dp_h + qlen + 1;
 		dev_pre_dp_e2 = dev_pre_dp_e1 + qlen + 1;
 
-		dev_dp_f1 = dev_dp_e2 + qlen + 1;
-		dev_dp_f2 = dev_dp_f1 + qlen + 1;
+		/* dev_dp_f1 = dev_dp_e2 + qlen + 1; */
+		/* dev_dp_f2 = dev_dp_f1 + qlen + 1; */
 		
 		// 纵坐标最大是qlen，共（qlen+1）个元素
 		_cuda_end = MIN_OF_THREE(cuda_pre_end + 1, cuda_end, qlen);
@@ -2645,17 +2746,22 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 			flag = 0;
 			_cuda_beg = cuda_pre_beg;
 		}
+		gap = _cuda_beg - cuda_beg;
 		// cuda parallelization
 		threads_per_block = 256;
 		blocks_per_grid = (_cuda_end - _cuda_beg + 1) + threads_per_block - 1 / threads_per_block;
-		cuda_set_M<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order,_cuda_beg, _cuda_end, flag, i);
+		/* cuda_set_M<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order,_cuda_beg, _cuda_end, flag, i, gap); */
+
+		_cuda_end = MIN_OF_TWO(cuda_pre_end, cuda_end);
+		cuda_set_ME<<<3, threads_per_block>>>(dev_dp_h, dev_pre_dp_h, m_source_order,dev_dp_e1, dev_pre_dp_e1, dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2,_cuda_beg, _cuda_end, flag, i, gap);
+
 		_cuda_end = MIN_OF_TWO(cuda_pre_end, cuda_end);
 		/* cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end); */
 		/* cuda_set_E<<<blocks_per_grid, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, _cuda_beg, _cuda_end); */
 
 		/* cuda_set_E_nb<<<1, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, _cuda_beg, _cuda_end); */
 		/* cuda_set_E_nb<<<1, threads_per_block>>>(dev_dp_e2, dev_pre_dp_e2, _cuda_beg, _cuda_end); */
-		cuda_set_E_nb2<<<1, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2, _cuda_beg, _cuda_end, i);
+		/* cuda_set_E_nb2<<<1, threads_per_block>>>(dev_dp_e1, dev_pre_dp_e1, dev_dp_e2, dev_pre_dp_e2, e_source_order, e_source_order2, _cuda_beg, _cuda_end, i, gap); */
 	}
 	threads_per_block = 512;
 
@@ -2669,7 +2775,7 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 	/* } */
 
 	blocks_per_grid = (cuda_end - cuda_beg + 1) + threads_per_block - 1 / threads_per_block;
-	cuda_add<<<3, threads_per_block>>>(dev_dp_h, dev_q, cuda_beg, cuda_end);
+	/* cuda_add<<<3, threads_per_block>>>(dev_dp_h, dev_q, cuda_beg, cuda_end); */
 
 	// 31-33test
 	/* result = (int *)malloc(sizeof(int) * (qlen + 1) * 5); */
@@ -2684,7 +2790,14 @@ void cuda_abpoa_cg_dp(int *DEV_DP_H2E2F, int **pre_index, int *pre_n, int index_
 	/* cuda_suboe1_shift_right_one<<<blocks_per_grid, threads_per_block>>>(dev_dp_f2, dev_dp_h, gap_oe2, cuda_beg, cuda_end, INF_MIN, max_pre_end); */
 	/* cuda_suboe1_shift_right_one<<<10, threads_per_block>>>(dev_dp_f1, dev_dp_h, gap_oe1, cuda_beg, cuda_end, INF_MIN, max_pre_end); */
 	/* cuda_suboe1_shift_right_one<<<10, threads_per_block>>>(dev_dp_f2, dev_dp_h, gap_oe2, cuda_beg, cuda_end, INF_MIN, max_pre_end); */
-	cuda_suboe1_shift_right_one_nb<<<10, threads_per_block>>>(dev_dp_f2,dev_dp_f1, dev_dp_h, gap_oe2, gap_oe1, cuda_beg, cuda_end, INF_MIN, max_pre_end);
+	int temp_max_pre_end;
+	if (max_pre_end + 2 >= cuda_end) {
+		temp_max_pre_end = cuda_end - 2;
+	} else {
+		temp_max_pre_end = max_pre_end;
+	}
+	cuda_add_and_suboe1_shift_right_one_nb<<<3, threads_per_block>>>(dev_dp_f2,dev_dp_f1, dev_dp_h, gap_oe2, gap_oe1, dev_q, cuda_beg, cuda_end, INF_MIN, temp_max_pre_end);
+	/* cuda_suboe1_shift_right_one_nb<<<10, threads_per_block>>>(dev_dp_f2,dev_dp_f1, dev_dp_h, gap_oe2, gap_oe1, cuda_beg, cuda_end, INF_MIN, temp_max_pre_end); */
 
 	// 31-33test
 	/* if (index_i == 52) { */
@@ -2975,7 +3088,7 @@ void cuda_my_abpoa_cg_backtrack(uint8_t *backtrack_matrix, uint8_t *e_source_ord
     res->n_cigar = n_c;
     res->node_e = best_i, res->query_e = best_j-1; /* 0-based */
     res->node_s = _start_i, res->query_s = _start_j-1;
-	abpoa_print_cigar(n_c, res->graph_cigar, graph);
+	/* abpoa_print_cigar(n_c, res->graph_cigar, graph); */
 	/* abpoa_print_cigar(n_c, *graph_cigar, graph); */
 }
 
@@ -3451,9 +3564,9 @@ int cuda_abpoa_cg_global_align_sequence_to_graph_core(abpoa_t *ab, int qlen, uin
 	FILE *m_source_order_file = fopen(m_source_order_name, "w");
 	FILE *e1e2f1f2_extension_file = fopen(e1e2f1f2_extension_name, "w");
 	/* print_backtrack_matrix(backtrack_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, backtrack_file); */
-	print_backtrack_matrix(e_source_order_matrix1, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file1);
-	print_backtrack_matrix(e_source_order_matrix2, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file2);
-	print_backtrack_matrix(m_source_order_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, m_source_order_file);
+	/* print_backtrack_matrix(e_source_order_matrix1, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file1); */
+	/* print_backtrack_matrix(e_source_order_matrix2, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e_source_order_file2); */
+	/* print_backtrack_matrix(m_source_order_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, m_source_order_file); */
 	/* print_backtrack_matrix(e1e2f1f2_extension_matrix, *backtrack_size, cuda_accumulate_beg, matrix_row_n, e1e2f1f2_extension_file); */
 	fclose(backtrack_file);
 	fclose(e_source_order_file1);

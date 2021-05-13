@@ -1,0 +1,11 @@
+
+#define _uni_realloc(p, n, m, type) {                   \
+    if (m <= 0) {                                       \
+        m = 1;                                          \
+        m = MAX_OF_TWO(n, m);                           \
+        p = (type*)_err_malloc((m) * sizeof(type));     \
+    } else if (n >= m) {                                \
+        m = n + 1; kroundup32(m);                       \
+        p = (type*)_err_realloc(p, (m) * sizeof(type)); \
+    }                                                   \
+}

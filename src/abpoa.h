@@ -56,6 +56,12 @@ typedef struct {
     int n_aln_bases, n_matched_bases;
 } abpoa_res_t;
 
+// 在gpu计算band需要的参数
+typedef struct {
+    int wb; float wf; // extra band width
+	int qlen;
+} cuda_para_t;
+
 typedef struct {
     int m; int *mat; // score matrix
     int match, mismatch, gap_open1, gap_open2, gap_ext1, gap_ext2; int inf_min;
@@ -80,6 +86,12 @@ typedef struct {
     uint8_t base; // 0~m
     // ID, pos ???
 } abpoa_node_t;
+
+// gpu计算band需要的图数据
+typedef struct {
+    int *node_id_to_max_pos_left, *node_id_to_max_pos_right, *node_id_to_max_remain;
+	int **node_out_edge_n;
+} cuda_graph_t;
 
 typedef struct {
     abpoa_node_t *node; int node_n, node_m, index_rank_m; 
