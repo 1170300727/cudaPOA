@@ -1,10 +1,10 @@
 # abPOA: adaptive banded Partial Order Alignment
 ## 写在最前面
-项目是基于自适应比对带的偏序比对启发式加速方法（abpoa）的CUDA C实现，目的是利用GPU并行计算提高计算的并行度。
-原abpoa是我实验室师兄设计实现的，实现采用SIMD并行计算，其github地址为：https://github.com/yangao07/abPOA
-我的工作集中在src/simd_abpoa_align.cu、src/simd_abpoa_align.h的实现，以及对makefile的CUDA C相关改造。
-我对原abpoa的偏序比对计算部分进行CUDA C实现，实现了convex比对模式下的全局比对，极大提高了计算的并行度。
-同时我熟悉整个项目的计算流程、相关数据结构。
+- 项目是基于自适应比对带的偏序比对启发式加速方法（abpoa）的CUDA C实现，目的是利用GPU并行计算提高计算的并行度。
+- 原abpoa是我实验室师兄设计实现的，实现采用SIMD并行计算，其github地址为：https://github.com/yangao07/abPOA
+- 我的工作集中在src/simd_abpoa_align.cu、src/simd_abpoa_align.h的实现，以及对makefile的CUDA C相关改造。
+- 我对原abpoa的偏序比对计算部分进行CUDA C实现，实现了convex比对模式下的全局比对，极大提高了计算的并行度。
+- 同时我熟悉整个项目的计算流程、相关数据结构。
 ## Getting started
 ```
 git clone https://github.com/1170300727/cudaPOA
