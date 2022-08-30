@@ -1,4 +1,4 @@
-# abPOA: adaptive banded Partial Order Alignment
+# cudaPOA: 基于异构架构的快速基因组多序列比对算法
 ## 写在最前面
 - 项目是基于自适应比对带的偏序比对启发式加速方法（abpoa）的CUDA C实现，目的是利用GPU并行计算提高计算的并行度。
 - 原abpoa是我实验室师兄设计实现的，实现采用SIMD并行计算，其github地址为：https://github.com/yangao07/abPOA
